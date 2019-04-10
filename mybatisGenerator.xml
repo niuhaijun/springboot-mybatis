@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!--
+生成器配置参考链接
+  1、https://www.jianshu.com/p/e09d2370b796
+  2、https://blog.csdn.net/m0_37961948/article/details/78900869
+  3、http://www.mybatis.org/generator/index.html
+-->
+<generatorConfiguration>
+
+  <!--
+  引入配置文件，在<context>中就可以引用响应的设置。可选
+  -->
+<!--  <properties resource="mybatis-generator/mybatisGeneratorInit.properties"/>-->
+
+
+
+  <!--
+  在MBG工作的时候，需要额外加载依赖包。如果不写，需要在maven插件中指定数据库的JDBC驱动依赖
+  classPathEntry: 数据库的JDBC驱动,换成你自己的驱动位置
+  -->
+<!--  <classPathEntry location="/Users/niuhaijun/projects/mvn-conf/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar"/>-->
+
+
+
+  <!--
+  context：一个数据库一个context
+
+  id:必选，上下文id，用于在生成错误时提示
+
+  defaultModelType:指定生成对象的样式
+    1，conditional：类似hierarchical；
+    2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+    3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
+
+  targetRuntime:
+    1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+    2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+
+  introspectedColumnImpl：类全限定名，用于扩展MBG
+  -->
+  <context id="admin"  targetRuntime="MyBatis3">
+
+    <!-- 1 property -->
+    <property name="javaFileEncoding" value="UTF-8"/>
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+    <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+
+    <!-- 2 plugin -->
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>
+    <plugin
+      type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.OptimisticLockAutoIncreasePlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.PaginationPlugin"/>
+
+
+    <!-- 3 commentGenerator -->
+    <commentGenerator>
+      <property name="suppressDate" value="false"/>
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+
+    <!-- 4 jdbcConnection -->
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+      connectionURL="jdbc:mysql://localhost:3306/spring_boot_mybatis?characterEncoding=UTF-8&amp;useSSL=false"
+      userId="root" password="!@#$1234Abcd"/>
+
+
+    <!-- 5 javaTypeResolver -->
+
+
+    <!-- 6 javaModelGenerator -->
+    <javaModelGenerator targetPackage="com.niu.springbootmybatis.model"
+      targetProject="src/main/java">
+      <property name="enableSubPackages" value="true"/>
+      <property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+
+
+    <!-- 7 sqlMapGenerator -->
+    <sqlMapGenerator targetPackage="mapper"
+      targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+
+
+    <!-- 8 javaClientGenerator -->
+    <javaClientGenerator targetPackage="com.niu.springbootmybatis.mapper"
+      targetProject="src/main/java" type="XMLMAPPER">
+      <property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+
+    <!-- 9 table -->
+    <table tableName="spring_boot_mybatis_users" domainObjectName="Users"></table>
+    <table tableName="spring_boot_mybatis_goods" domainObjectName="Goods"></table>
+    <table tableName="spring_boot_mybatis_orders" domainObjectName="Orders"></table>
+
+  </context>
+</generatorConfiguration>
