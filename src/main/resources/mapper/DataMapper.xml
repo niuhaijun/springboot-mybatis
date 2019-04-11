@@ -239,7 +239,7 @@
     SELECT
     <choose>
       <when test="timeType != null">
-        #{timeType},
+        ${timeType},
       </when>
       <otherwise>
         days,
@@ -251,7 +251,7 @@
     <where>
       <choose>
         <when test="taskType != null">
-          AND task_type = #{taskType}
+          AND task_type = ${taskType}
         </when>
         <otherwise>
           AND task_type = '1'
@@ -281,7 +281,7 @@
     GROUP BY
     <choose>
       <when test="timeType != null">
-        #{timeType}
+        ${timeType}
       </when>
       <otherwise>
         days
@@ -290,7 +290,7 @@
     ORDER BY
     <choose>
       <when test="timeType != null">
-        #{timeType}
+        ${timeType}
       </when>
       <otherwise>
         days
