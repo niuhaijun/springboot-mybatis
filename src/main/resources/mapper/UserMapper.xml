@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.niu.springbootmybatis.mapper.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.niu.springbootmybatis.model.Goods" >
+<mapper namespace="com.niu.springbootmybatis.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.niu.springbootmybatis.model.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="DOUBLE" />
-    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="used" property="used" jdbcType="INTEGER" />
@@ -70,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, type, name, price, num, create_time, update_time, used
+    id, username, password, create_time, update_time, used
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.GoodsExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.UserExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from spring_boot_mybatis_goods
+    from spring_boot_mybatis_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,44 +90,38 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from spring_boot_mybatis_goods
+    from spring_boot_mybatis_user
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from spring_boot_mybatis_goods
+    delete from spring_boot_mybatis_user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.niu.springbootmybatis.model.GoodsExample" >
-    delete from spring_boot_mybatis_goods
+  <delete id="deleteByExample" parameterType="com.niu.springbootmybatis.model.UserExample" >
+    delete from spring_boot_mybatis_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.niu.springbootmybatis.model.Goods" >
-    insert into spring_boot_mybatis_goods (id, type, name, 
-      price, num, create_time, 
-      update_time, used)
-    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DOUBLE}, #{num,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{used,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.niu.springbootmybatis.model.User" >
+    insert into spring_boot_mybatis_user (id, username, password, 
+      create_time, update_time, used
+      )
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{used,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.Goods" >
-    insert into spring_boot_mybatis_goods
+  <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.User" >
+    insert into spring_boot_mybatis_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="type != null" >
-        type,
+      <if test="username != null" >
+        username,
       </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="price != null" >
-        price,
-      </if>
-      <if test="num != null" >
-        num,
+      <if test="password != null" >
+        password,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -145,17 +137,11 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        #{type,jdbcType=INTEGER},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="num != null" >
-        #{num,jdbcType=INTEGER},
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -168,29 +154,23 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.niu.springbootmybatis.model.GoodsExample" resultType="java.lang.Integer" >
-    select count(*) from spring_boot_mybatis_goods
+  <select id="countByExample" parameterType="com.niu.springbootmybatis.model.UserExample" resultType="java.lang.Integer" >
+    select count(*) from spring_boot_mybatis_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update spring_boot_mybatis_goods
+    update spring_boot_mybatis_user
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null" >
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.price != null" >
-        price = #{record.price,jdbcType=DOUBLE},
-      </if>
-      <if test="record.num != null" >
-        num = #{record.num,jdbcType=INTEGER},
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -210,12 +190,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update spring_boot_mybatis_goods
+    update spring_boot_mybatis_user
     set id = #{record.id,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=DOUBLE},
-      num = #{record.num,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       used = #{record.used,jdbcType=INTEGER}
@@ -223,20 +201,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.niu.springbootmybatis.model.Goods" >
-    update spring_boot_mybatis_goods
+  <update id="updateByPrimaryKeySelective" parameterType="com.niu.springbootmybatis.model.User" >
+    update spring_boot_mybatis_user
     <set >
-      <if test="type != null" >
-        type = #{type,jdbcType=INTEGER},
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        price = #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="num != null" >
-        num = #{num,jdbcType=INTEGER},
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -250,24 +222,22 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.niu.springbootmybatis.model.Goods" >
-    update spring_boot_mybatis_goods
-    set type = #{type,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DOUBLE},
-      num = #{num,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.niu.springbootmybatis.model.User" >
+    update spring_boot_mybatis_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       used = #{used,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.GoodsExample" id="selectByExampleWithRowbounds" >
+  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.UserExample" id="selectByExampleWithRowbounds" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from spring_boot_mybatis_goods
+    from spring_boot_mybatis_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -275,22 +245,22 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="sumByExample" parameterType="com.niu.springbootmybatis.model.GoodsExample" resultType="long" >
-    select sum(${sumCol}) from spring_boot_mybatis_goods
+  <select id="sumByExample" parameterType="com.niu.springbootmybatis.model.UserExample" resultType="long" >
+    select sum(${sumCol}) from spring_boot_mybatis_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <insert id="batchInsert">
     <if test="items.get(0) != null">
-            insert into spring_boot_mybatis_goods  (id, type, name, 
-        price, num, create_time, 
-        update_time, used)
+            insert into spring_boot_mybatis_user  (id, username, password, 
+        create_time, update_time, used
+        )
       values
       <foreach collection="items" item="item" index="index" separator=",">
-      (#{item.id,jdbcType=VARCHAR}, #{item.type,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR}, 
-        #{item.price,jdbcType=DOUBLE}, #{item.num,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
-        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.used,jdbcType=INTEGER})
+      (#{item.id,jdbcType=VARCHAR}, #{item.username,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.used,jdbcType=INTEGER}
+        )
       </foreach>
     </if>
   </insert>

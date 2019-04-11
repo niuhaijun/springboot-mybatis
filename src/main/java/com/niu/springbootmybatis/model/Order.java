@@ -3,13 +3,7 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Orders implements Serializable {
-    private String id;
-
-    private String userId;
-
-    private String goodId;
-
+public class Order extends OrderKey implements Serializable {
     private Date createTime;
 
     private Date updateTime;
@@ -19,30 +13,6 @@ public class Orders implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String updateSql;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
-    }
-
-    public String getGoodId() {
-        return goodId;
-    }
-
-    public void setGoodId(String goodId) {
-        this.goodId = goodId == null ? null : goodId.trim();
-    }
 
     public Date getCreateTime() {
         return createTime;
@@ -74,9 +44,6 @@ public class Orders implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
-        sb.append(", goodId=").append(goodId);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", used=").append(used);

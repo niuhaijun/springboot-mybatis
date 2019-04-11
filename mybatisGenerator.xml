@@ -58,8 +58,7 @@
     <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>
-    <plugin
-      type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.OptimisticLockAutoIncreasePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>
@@ -104,9 +103,9 @@
     </javaClientGenerator>
 
     <!-- 9 table -->
-    <table tableName="spring_boot_mybatis_users" domainObjectName="Users"></table>
-    <table tableName="spring_boot_mybatis_goods" domainObjectName="Goods"></table>
-    <table tableName="spring_boot_mybatis_orders" domainObjectName="Orders"></table>
+    <table tableName="spring_boot_mybatis_user" domainObjectName="User"></table>
+    <table tableName="spring_boot_mybatis_good" domainObjectName="Good"></table>
+    <table tableName="spring_boot_mybatis_order" domainObjectName="Order"></table>
 
   </context>
 </generatorConfiguration>

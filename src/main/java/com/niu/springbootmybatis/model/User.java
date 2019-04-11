@@ -3,16 +3,12 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Goods implements Serializable {
+public class User implements Serializable {
     private String id;
 
-    private Integer type;
+    private String username;
 
-    private String name;
-
-    private Double price;
-
-    private Integer num;
+    private String password;
 
     private Date createTime;
 
@@ -32,36 +28,20 @@ public class Goods implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public Integer getType() {
-        return type;
+    public String getUsername() {
+        return username;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Date getCreateTime() {
@@ -95,10 +75,8 @@ public class Goods implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", type=").append(type);
-        sb.append(", name=").append(name);
-        sb.append(", price=").append(price);
-        sb.append(", num=").append(num);
+        sb.append(", username=").append(username);
+        sb.append(", password=").append(password);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", used=").append(used);
