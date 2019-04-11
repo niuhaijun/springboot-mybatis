@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niu.springbootmybatis.mapper.DataMapper" >
+  <resultMap id="BaseResultMap" type="com.niu.springbootmybatis.model.Data" >
+    <constructor >
+      <idArg column="date" jdbcType="DATE" javaType="java.util.Date" />
+      <idArg column="task_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="task_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="num" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    `date`, task_id, task_type, num, create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.DataExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spring_boot_mybatis_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.DataKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from spring_boot_mybatis_data
+    where `date` = #{date,jdbcType=DATE}
+      and task_id = #{taskId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.niu.springbootmybatis.model.DataKey" >
+    delete from spring_boot_mybatis_data
+    where `date` = #{date,jdbcType=DATE}
+      and task_id = #{taskId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.niu.springbootmybatis.model.DataExample" >
+    delete from spring_boot_mybatis_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.niu.springbootmybatis.model.Data" >
+    insert into spring_boot_mybatis_data (`date`, task_id, task_type, 
+      num, create_time)
+    values (#{date,jdbcType=DATE}, #{taskId,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, 
+      #{num,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.Data" >
+    insert into spring_boot_mybatis_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        `date`,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="taskType != null" >
+        task_type,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.niu.springbootmybatis.model.DataExample" resultType="java.lang.Integer" >
+    select count(*) from spring_boot_mybatis_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update spring_boot_mybatis_data
+    <set >
+      <if test="record.date != null" >
+        `date` = #{record.date,jdbcType=DATE},
+      </if>
+      <if test="record.taskId != null" >
+        task_id = #{record.taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskType != null" >
+        task_type = #{record.taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update spring_boot_mybatis_data
+    set `date` = #{record.date,jdbcType=DATE},
+      task_id = #{record.taskId,jdbcType=VARCHAR},
+      task_type = #{record.taskType,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niu.springbootmybatis.model.Data" >
+    update spring_boot_mybatis_data
+    <set >
+      <if test="taskType != null" >
+        task_type = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where `date` = #{date,jdbcType=DATE}
+      and task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niu.springbootmybatis.model.Data" >
+    update spring_boot_mybatis_data
+    set task_type = #{taskType,jdbcType=VARCHAR},
+      num = #{num,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where `date` = #{date,jdbcType=DATE}
+      and task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.DataExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spring_boot_mybatis_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
+  <sql id="buildTmpTableSQL">
+    SELECT num,
+           task_type,
+           DATE_FORMAT(date, '%Y-%m-%d')                                         days,
+           DATE_FORMAT(DATE_ADD(date, INTERVAL - WEEKDAY(date) DAY), '%Y-%m-%d') weeks,
+           DATE_FORMAT(date, '%Y-%m')                                            months
+    FROM spring_boot_mybatis_data
+  </sql>
+  <select id="analysisData" parameterType="com.niu.springbootmybatis.controller.param.DataParam"
+    resultType="com.niu.springbootmybatis.controller.vo.DataVO">
+    SELECT
+    <choose>
+      <when test="timeType == 'days'">
+        days,
+      </when>
+      <when test="timeType == 'weeks'">
+        weeks,
+      </when>
+      <when test="timeType == 'months'">
+        months,
+      </when>
+      <otherwise>
+        days,
+      </otherwise>
+    </choose>
+    SUM(num) AS totals
+    FROM
+    (<include refid="buildTmpTableSQL"/>) AS tmp
+    <where>
+      <choose>
+        <when test="taskType == 'imageAnnotation'">
+          AND task_type = 'imageAnnotation'
+        </when>
+        <when test="taskType == 'speechRecording'">
+          AND task_type = 'speechRecording'
+        </when>
+        <otherwise>
+          AND task_type = 'imageAnnotation'
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="timeType == 'days'">
+          AND days <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m-%d')
+          AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m-%d')
+        </when>
+        <when test="timeType == 'weeks'">
+          AND weeks <![CDATA[ >= ]]> DATE_FORMAT(DATE_ADD(#{startTime, jdbcType=VARCHAR},
+          INTERVAL-WEEKDAY(#{startTime, jdbcType=VARCHAR}) DAY), '%Y-%m-%d')
+          AND weeks <![CDATA[ <= ]]> DATE_FORMAT(DATE_ADD(#{endTime, jdbcType=VARCHAR},
+          INTERVAL-WEEKDAY(#{endTime, jdbcType=VARCHAR}) DAY), '%Y-%m-%d')
+        </when>
+        <when test="timeType == 'months'">
+          AND months <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m')
+          AND months <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m')
+        </when>
+        <otherwise>
+          AND days <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m-%d')
+          AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m-%d')
+        </otherwise>
+      </choose>
+    </where>
+    GROUP BY
+    <choose>
+      <when test="timeType == 'days'">
+        days
+      </when>
+      <when test="timeType == 'weeks'">
+        weeks
+      </when>
+      <when test="timeType == 'months'">
+        months
+      </when>
+      <otherwise>
+        days
+      </otherwise>
+    </choose>
+    ORDER BY
+    <choose>
+      <when test="timeType == 'days'">
+        days
+      </when>
+      <when test="timeType == 'weeks'">
+        weeks
+      </when>
+      <when test="timeType == 'months'">
+        months
+      </when>
+      <otherwise>
+        days
+      </otherwise>
+    </choose>
+  </select>
+
+
+
+
+</mapper>
