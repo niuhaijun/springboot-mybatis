@@ -238,14 +238,8 @@
     resultType="com.niu.springbootmybatis.controller.vo.DataVO">
     SELECT
     <choose>
-      <when test="timeType == 'days'.toString()">
-        days,
-      </when>
-      <when test="timeType == 'weeks'.toString()">
-        weeks,
-      </when>
-      <when test="timeType == 'months'.toString()">
-        months,
+      <when test="timeType != null">
+        #{timeType},
       </when>
       <otherwise>
         days,
@@ -256,28 +250,25 @@
     (<include refid="buildTmpTableSQL"/>) AS tmp
     <where>
       <choose>
-        <when test="taskType == '1'.toString()">
-          AND task_type = '1'
-        </when>
-        <when test="taskType == '2'.toString()">
-          AND task_type = '2'
+        <when test="taskType != null">
+          AND task_type = #{taskType}
         </when>
         <otherwise>
           AND task_type = '1'
         </otherwise>
       </choose>
       <choose>
-        <when test="timeType == 'days'">
+        <when test="timeType == 'days'.toString()">
           AND days <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m-%d')
           AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m-%d')
         </when>
-        <when test="timeType == 'weeks'">
+        <when test="timeType == 'weeks'.toString()">
           AND weeks <![CDATA[ >= ]]> DATE_FORMAT(DATE_ADD(#{startTime, jdbcType=VARCHAR},
           INTERVAL-WEEKDAY(#{startTime, jdbcType=VARCHAR}) DAY), '%Y-%m-%d')
           AND weeks <![CDATA[ <= ]]> DATE_FORMAT(DATE_ADD(#{endTime, jdbcType=VARCHAR},
           INTERVAL-WEEKDAY(#{endTime, jdbcType=VARCHAR}) DAY), '%Y-%m-%d')
         </when>
-        <when test="timeType == 'months'">
+        <when test="timeType == 'months'.toString()">
           AND months <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m')
           AND months <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m')
         </when>
@@ -289,14 +280,8 @@
     </where>
     GROUP BY
     <choose>
-      <when test="timeType == 'days'.toString()">
-        days
-      </when>
-      <when test="timeType == 'weeks'.toString()">
-        weeks
-      </when>
-      <when test="timeType == 'months'.toString()">
-        months
+      <when test="timeType != null">
+        #{timeType}
       </when>
       <otherwise>
         days
@@ -304,14 +289,8 @@
     </choose>
     ORDER BY
     <choose>
-      <when test="timeType == 'days'.toString()">
-        days
-      </when>
-      <when test="timeType == 'weeks'.toString()">
-        weeks
-      </when>
-      <when test="timeType == 'months'.toString()">
-        months
+      <when test="timeType != null">
+        #{timeType}
       </when>
       <otherwise>
         days
