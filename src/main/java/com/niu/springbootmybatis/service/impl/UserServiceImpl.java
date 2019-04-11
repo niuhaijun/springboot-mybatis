@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
   @Autowired
-  private UserMapper usersMapper;
+  private UserMapper userMapper;
 
   @Override
   public Integer add(UserPara userPara) {
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     User user = new User();
     BeanUtils.copyProperties(userPara, user);
-    return usersMapper.insertSelective(user);
+    return userMapper.insertSelective(user);
   }
 
   @Override
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     UserExample example = new UserExample();
     example.createCriteria().andIdEqualTo(userPara.getId());
-    return usersMapper.updateByExampleSelective(user, example);
+    return userMapper.updateByExampleSelective(user, example);
   }
 
   @Override
@@ -60,13 +60,13 @@ public class UserServiceImpl implements UserService {
     UserExample example = new UserExample();
     example.createCriteria().andIdEqualTo(userPara.getId());
 
-    return usersMapper.updateByExampleSelective(user, example);
+    return userMapper.updateByExampleSelective(user, example);
   }
 
   @Override
   public Integer delete(UserPara userPara) {
 
-    return usersMapper.deleteByPrimaryKey(userPara.getId());
+    return userMapper.deleteByPrimaryKey(userPara.getId());
   }
 
   @Override
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
     UserExample example = new UserExample();
     example.createCriteria().andUsedEqualTo(1);
 
-    List<User> userList = usersMapper.selectByExample(example);
+    List<User> userList = userMapper.selectByExample(example);
     List<UserVO> result = new ArrayList<>(userList.size());
     userList.forEach(t -> {
       UserVO userVO = new UserVO();
@@ -96,13 +96,7 @@ public class UserServiceImpl implements UserService {
      * 将参数传给这个方法就可以实现物理分页了，非常简单。
      */
     PageHelper.startPage(userPara.getPageNum(), userPara.getPageSize());
-    List<User> userList = usersMapper.selectByExample(example);
-    List<UserVO> result = new ArrayList<>(userList.size());
-    userList.forEach(t -> {
-      UserVO userVO = new UserVO();
-      BeanUtils.copyProperties(t, userVO);
-      result.add(userVO);
-    });
+    List<UserVO> result = select(userPara);
 
     PageInfo<UserVO> pageInfo = new PageInfo<>(result);
     return pageInfo;
