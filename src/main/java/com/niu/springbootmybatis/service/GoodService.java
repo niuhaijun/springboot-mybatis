@@ -2,9 +2,7 @@ package com.niu.springbootmybatis.service;
 
 import com.github.pagehelper.PageInfo;
 import com.niu.springbootmybatis.controller.param.GoodPara;
-import com.niu.springbootmybatis.controller.param.UserPara;
 import com.niu.springbootmybatis.controller.vo.GoodVO;
-import com.niu.springbootmybatis.controller.vo.UserVO;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 

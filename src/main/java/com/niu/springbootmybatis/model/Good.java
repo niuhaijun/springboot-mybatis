@@ -4,119 +4,132 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Good implements Serializable {
-    private String id;
 
-    private Integer type;
+  private static final long serialVersionUID = 1L;
+  private String id;
+  private Integer type;
+  private String name;
+  private Double price;
+  private Integer num;
+  private Date createTime;
+  private Date updateTime;
+  private Integer used;
 
-    private String name;
+  public Good(String id, Integer type, String name, Double price, Integer num, Date createTime,
+      Date updateTime, Integer used) {
 
-    private Double price;
+    this.id = id;
+    this.type = type;
+    this.name = name;
+    this.price = price;
+    this.num = num;
+    this.createTime = createTime;
+    this.updateTime = updateTime;
+    this.used = used;
+  }
 
-    private Integer num;
+  public Good() {
 
-    private Date createTime;
+    super();
+  }
 
-    private Date updateTime;
+  public String getId() {
 
-    private Integer used;
+    return id;
+  }
 
-    private static final long serialVersionUID = 1L;
+  public void setId(String id) {
 
-    public Good(String id, Integer type, String name, Double price, Integer num, Date createTime, Date updateTime, Integer used) {
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.price = price;
-        this.num = num;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.used = used;
-    }
+    this.id = id == null ? null : id.trim();
+  }
 
-    public Good() {
-        super();
-    }
+  public Integer getType() {
 
-    public String getId() {
-        return id;
-    }
+    return type;
+  }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+  public void setType(Integer type) {
 
-    public Integer getType() {
-        return type;
-    }
+    this.type = type;
+  }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
+  public String getName() {
 
-    public String getName() {
-        return name;
-    }
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+  public void setName(String name) {
 
-    public Double getPrice() {
-        return price;
-    }
+    this.name = name == null ? null : name.trim();
+  }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+  public Double getPrice() {
 
-    public Integer getNum() {
-        return num;
-    }
+    return price;
+  }
 
-    public void setNum(Integer num) {
-        this.num = num;
-    }
+  public void setPrice(Double price) {
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+    this.price = price;
+  }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+  public Integer getNum() {
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+    return num;
+  }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+  public void setNum(Integer num) {
 
-    public Integer getUsed() {
-        return used;
-    }
+    this.num = num;
+  }
 
-    public void setUsed(Integer used) {
-        this.used = used;
-    }
+  public Date getCreateTime() {
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", type=").append(type);
-        sb.append(", name=").append(name);
-        sb.append(", price=").append(price);
-        sb.append(", num=").append(num);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", used=").append(used);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+    return createTime;
+  }
+
+  public void setCreateTime(Date createTime) {
+
+    this.createTime = createTime;
+  }
+
+  public Date getUpdateTime() {
+
+    return updateTime;
+  }
+
+  public void setUpdateTime(Date updateTime) {
+
+    this.updateTime = updateTime;
+  }
+
+  public Integer getUsed() {
+
+    return used;
+  }
+
+  public void setUsed(Integer used) {
+
+    this.used = used;
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    sb.append(getClass().getSimpleName());
+    sb.append(" [");
+    sb.append("Hash = ").append(hashCode());
+    sb.append(", id=").append(id);
+    sb.append(", type=").append(type);
+    sb.append(", name=").append(name);
+    sb.append(", price=").append(price);
+    sb.append(", num=").append(num);
+    sb.append(", createTime=").append(createTime);
+    sb.append(", updateTime=").append(updateTime);
+    sb.append(", used=").append(used);
+    sb.append(", serialVersionUID=").append(serialVersionUID);
+    sb.append("]");
+    return sb.toString();
+  }
 }

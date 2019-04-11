@@ -1,5 +1,6 @@
 package com.niu.springbootmybatis.mapper;
 
+import com.niu.springbootmybatis.controller.vo.UserGoodVO;
 import com.niu.springbootmybatis.model.Order;
 import com.niu.springbootmybatis.model.OrderExample;
 import com.niu.springbootmybatis.model.OrderKey;
@@ -7,25 +8,33 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OrderMapper {
-    int countByExample(OrderExample example);
 
-    int deleteByExample(OrderExample example);
+  int countByExample(OrderExample example);
 
-    int deleteByPrimaryKey(OrderKey key);
+  int deleteByExample(OrderExample example);
 
-    int insert(Order record);
+  int deleteByPrimaryKey(OrderKey key);
 
-    int insertSelective(Order record);
+  int insert(Order record);
 
-    List<Order> selectByExample(OrderExample example);
+  int insertSelective(Order record);
 
-    Order selectByPrimaryKey(OrderKey key);
+  List<Order> selectByExample(OrderExample example);
 
-    int updateByExampleSelective(@Param("record") Order record, @Param("example") OrderExample example);
+  Order selectByPrimaryKey(OrderKey key);
 
-    int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
+  int updateByExampleSelective(@Param("record") Order record,
+      @Param("example") OrderExample example);
 
-    int updateByPrimaryKeySelective(Order record);
+  int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
 
-    int updateByPrimaryKey(Order record);
+  int updateByPrimaryKeySelective(Order record);
+
+  int updateByPrimaryKey(Order record);
+
+  /**
+   * 联表查询
+   */
+  List<UserGoodVO> getUserWithGoods(String userId);
+
 }

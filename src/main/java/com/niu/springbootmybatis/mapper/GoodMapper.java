@@ -6,25 +6,26 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface GoodMapper {
-    int countByExample(GoodExample example);
 
-    int deleteByExample(GoodExample example);
+  int countByExample(GoodExample example);
 
-    int deleteByPrimaryKey(String id);
+  int deleteByExample(GoodExample example);
 
-    int insert(Good record);
+  int deleteByPrimaryKey(String id);
 
-    int insertSelective(Good record);
+  int insert(Good record);
 
-    List<Good> selectByExample(GoodExample example);
+  int insertSelective(Good record);
 
-    Good selectByPrimaryKey(String id);
+  List<Good> selectByExample(GoodExample example);
 
-    int updateByExampleSelective(@Param("record") Good record, @Param("example") GoodExample example);
+  Good selectByPrimaryKey(String id);
 
-    int updateByExample(@Param("record") Good record, @Param("example") GoodExample example);
+  int updateByExampleSelective(@Param("record") Good record, @Param("example") GoodExample example);
 
-    int updateByPrimaryKeySelective(Good record);
+  int updateByExample(@Param("record") Good record, @Param("example") GoodExample example);
 
-    int updateByPrimaryKey(Good record);
+  int updateByPrimaryKeySelective(Good record);
+
+  int updateByPrimaryKey(Good record);
 }

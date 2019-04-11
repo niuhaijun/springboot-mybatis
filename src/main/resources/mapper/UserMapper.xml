@@ -87,7 +87,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from spring_boot_mybatis_user
     where id = #{id,jdbcType=VARCHAR}
@@ -103,10 +103,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.niu.springbootmybatis.model.User" >
-    insert into spring_boot_mybatis_user (id, username, `password`, 
+    insert into spring_boot_mybatis_user (id, username, `password`,
       create_time, update_time, used
       )
-    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{used,jdbcType=INTEGER}
       )
   </insert>

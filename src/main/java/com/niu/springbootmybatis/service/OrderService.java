@@ -1,6 +1,8 @@
 package com.niu.springbootmybatis.service;
 
 import com.niu.springbootmybatis.controller.param.OrderPara;
+import com.niu.springbootmybatis.controller.vo.UserGoodVO;
+import java.util.List;
 
 /**
  * @Author: niuhaijun
@@ -10,4 +12,6 @@ import com.niu.springbootmybatis.controller.param.OrderPara;
 public interface OrderService {
 
   Integer add(OrderPara orderPara);
+
+  List<UserGoodVO> getUserWithGoods(String userId);
 }

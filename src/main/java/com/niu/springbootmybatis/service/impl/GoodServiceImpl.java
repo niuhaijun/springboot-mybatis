@@ -7,7 +7,6 @@ import com.niu.springbootmybatis.controller.vo.GoodVO;
 import com.niu.springbootmybatis.mapper.GoodMapper;
 import com.niu.springbootmybatis.model.Good;
 import com.niu.springbootmybatis.model.GoodExample;
-import com.niu.springbootmybatis.model.UserExample;
 import com.niu.springbootmybatis.service.GoodService;
 import java.util.ArrayList;
 import java.util.Date;

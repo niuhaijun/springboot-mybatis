@@ -86,7 +86,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.OrderKey" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from spring_boot_mybatis_order
     where user_id = #{userId,jdbcType=VARCHAR}
@@ -104,9 +104,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.niu.springbootmybatis.model.Order" >
-    insert into spring_boot_mybatis_order (user_id, good_id, create_time, 
+    insert into spring_boot_mybatis_order (user_id, good_id, create_time,
       update_time, used)
-    values (#{userId,jdbcType=VARCHAR}, #{goodId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{userId,jdbcType=VARCHAR}, #{goodId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
       #{updateTime,jdbcType=TIMESTAMP}, #{used,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.Order" >
@@ -210,4 +210,50 @@
     where user_id = #{userId,jdbcType=VARCHAR}
       and good_id = #{goodId,jdbcType=VARCHAR}
   </update>
+
+
+  <!--
+  联表查询
+  -->
+  <resultMap id="userWithGood" type="com.niu.springbootmybatis.controller.vo.UserGoodVO">
+    <id column="uid" property="id"/>
+    <result column="username" property="username"/>
+    <result column="used" property="used"/>
+    <!--
+    association标签指定单个对象的对应关系
+      property : 指定将数据放入UserGoodVO中的GoodVO属性中
+      javaType : user属性的类型
+    -->
+    <association property="goodVOList" javaType="com.niu.springbootmybatis.controller.vo.GoodVO">
+      <id column="gid" property="id"/>
+      <result column="type" property="type"/>
+      <result column="name" property="name"/>
+      <result column="price" property="price"/>
+      <result column="num" property="num"/>
+      <result column="create_time" property="createTime"/>
+      <result column="update_time" property="updateTime"/>
+      <result column="used" property="used"/>
+    </association>
+  </resultMap>
+  <select id="getUserWithGoods" parameterType="java.lang.String" resultMap="userWithGood">
+    SELECT
+      `user`.id as uid,
+      `user`.username,
+
+      good.id as gid,
+      good.type,
+      good.name,
+      good.price,
+      good.num,
+      good.create_time,
+      good.update_time,
+      good.used
+    FROM
+      spring_boot_mybatis_user `user`
+        JOIN spring_boot_mybatis_order `order` ON `user`.id = `order`.user_id
+        JOIN spring_boot_mybatis_good `good` ON `order`.good_id = `good`.id
+    WHERE `user`.id = #{userId}
+  </select>
+
+
 </mapper>
