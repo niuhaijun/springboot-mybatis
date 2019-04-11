@@ -238,13 +238,13 @@
     resultType="com.niu.springbootmybatis.controller.vo.DataVO">
     SELECT
     <choose>
-      <when test="timeType == 'days'">
+      <when test="timeType == 'days'.toString()">
         days,
       </when>
-      <when test="timeType == 'weeks'">
+      <when test="timeType == 'weeks'.toString()">
         weeks,
       </when>
-      <when test="timeType == 'months'">
+      <when test="timeType == 'months'.toString()">
         months,
       </when>
       <otherwise>
@@ -289,13 +289,13 @@
     </where>
     GROUP BY
     <choose>
-      <when test="timeType == 'days'">
+      <when test="timeType == 'days'.toString()">
         days
       </when>
-      <when test="timeType == 'weeks'">
+      <when test="timeType == 'weeks'.toString()">
         weeks
       </when>
-      <when test="timeType == 'months'">
+      <when test="timeType == 'months'.toString()">
         months
       </when>
       <otherwise>
@@ -304,13 +304,13 @@
     </choose>
     ORDER BY
     <choose>
-      <when test="timeType == 'days'">
+      <when test="timeType == 'days'.toString()">
         days
       </when>
-      <when test="timeType == 'weeks'">
+      <when test="timeType == 'weeks'.toString()">
         weeks
       </when>
-      <when test="timeType == 'months'">
+      <when test="timeType == 'months'.toString()">
         months
       </when>
       <otherwise>
