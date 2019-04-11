@@ -102,6 +102,7 @@
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
 
+
     <!-- 9 table -->
     <table tableName="spring_boot_mybatis_user" domainObjectName="User"></table>
     <table tableName="spring_boot_mybatis_good" domainObjectName="Good"></table>
