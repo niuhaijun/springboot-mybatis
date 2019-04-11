@@ -3,13 +3,7 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
-    private String id;
-
-    private String username;
-
-    private String password;
-
+public class Order extends OrderKey implements Serializable {
     private Date createTime;
 
     private Date updateTime;
@@ -18,41 +12,15 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public User(String id, String username, String password, Date createTime, Date updateTime, Integer used) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    public Order(String userId, String goodId, Date createTime, Date updateTime, Integer used) {
+        super(userId, goodId);
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.used = used;
     }
 
-    public User() {
+    public Order() {
         super();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
     }
 
     public Date getCreateTime() {
@@ -85,9 +53,6 @@ public class User implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", username=").append(username);
-        sb.append(", password=").append(password);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", used=").append(used);

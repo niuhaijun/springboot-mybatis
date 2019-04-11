@@ -8,22 +8,21 @@
   1、https://www.jianshu.com/p/e09d2370b796
   2、https://blog.csdn.net/m0_37961948/article/details/78900869
   3、http://www.mybatis.org/generator/index.html
+  4、https://www.cnblogs.com/xiaoheike/p/7569681.html
 -->
 <generatorConfiguration>
 
   <!--
   引入配置文件，在<context>中就可以引用相应的设置。可选
   -->
-<!--  <properties resource="mybatis-generator/mybatisGeneratorInit.properties"/>-->
-
+  <!--  <properties resource="mybatis-generator/mybatisGeneratorInit.properties"/>-->
 
 
   <!--
   在MBG工作的时候，需要额外加载依赖包。如果不写，需要在maven插件中指定数据库的JDBC驱动依赖
   classPathEntry: 数据库的JDBC驱动,换成你自己的驱动位置
   -->
-<!--  <classPathEntry location="/Users/niuhaijun/projects/mvn-conf/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar"/>-->
-
+  <!--  <classPathEntry location="/Users/niuhaijun/projects/mvn-conf/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar"/>-->
 
 
   <!--
@@ -42,7 +41,7 @@
 
   introspectedColumnImpl：类全限定名，用于扩展MBG
   -->
-  <context id="admin"  targetRuntime="MyBatis3">
+  <context id="admin" targetRuntime="MyBatis3">
 
     <!-- 1 property -->
     <!--
@@ -82,16 +81,21 @@
     -->
     <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
     <!--
-    未完待续。。。
+    MyBatis Generator中自带的一个分页插件
+    没啥用于，分页都是用pagehelper
     -->
     <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.PaginationPlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.OptimisticLockAutoIncreasePlugin"/>
+
+    <!--
+    以下插件的作用不明，需要后续跟进
+    -->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>-->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>-->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>-->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>-->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>-->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.PaginationPlugin"/>-->
+    <!--    <plugin type="com.github.oceanc.mybatis3.generator.plugin.OptimisticLockAutoIncreasePlugin"/>-->
 
 
     <!--3 commentGenerator

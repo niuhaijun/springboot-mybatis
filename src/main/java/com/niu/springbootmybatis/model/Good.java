@@ -3,12 +3,16 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+public class Good implements Serializable {
     private String id;
 
-    private String username;
+    private Integer type;
 
-    private String password;
+    private String name;
+
+    private Double price;
+
+    private Integer num;
 
     private Date createTime;
 
@@ -18,16 +22,18 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public User(String id, String username, String password, Date createTime, Date updateTime, Integer used) {
+    public Good(String id, Integer type, String name, Double price, Integer num, Date createTime, Date updateTime, Integer used) {
         this.id = id;
-        this.username = username;
-        this.password = password;
+        this.type = type;
+        this.name = name;
+        this.price = price;
+        this.num = num;
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.used = used;
     }
 
-    public User() {
+    public Good() {
         super();
     }
 
@@ -39,20 +45,36 @@ public class User implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getType() {
+        return type;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return name;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
     }
 
     public Date getCreateTime() {
@@ -86,8 +108,10 @@ public class User implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", username=").append(username);
-        sb.append(", password=").append(password);
+        sb.append(", type=").append(type);
+        sb.append(", name=").append(name);
+        sb.append(", price=").append(price);
+        sb.append(", num=").append(num);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", used=").append(used);
