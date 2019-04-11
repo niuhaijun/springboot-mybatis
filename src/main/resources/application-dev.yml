@@ -51,6 +51,10 @@ mybatis:
   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
+#控制台打印SQL
+logging:
+  level:
+    com.niu.springbootmybatis.mapper: debug
 
 
 
