@@ -5,7 +5,6 @@ import com.niu.springbootmybatis.model.OrderExample;
 import com.niu.springbootmybatis.model.OrderKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
 
 public interface OrderMapper {
     int countByExample(OrderExample example);
@@ -18,8 +17,6 @@ public interface OrderMapper {
 
     int insertSelective(Order record);
 
-    List<Order> selectByExampleWithRowbounds(OrderExample example, RowBounds rowBounds);
-
     List<Order> selectByExample(OrderExample example);
 
     Order selectByPrimaryKey(OrderKey key);
@@ -31,8 +28,4 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
-
-    Long sumByExample(OrderExample example);
-
-    void batchInsert(@Param("items") List<Order> items);
 }

@@ -4,7 +4,6 @@ import com.niu.springbootmybatis.model.User;
 import com.niu.springbootmybatis.model.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
 
 public interface UserMapper {
     int countByExample(UserExample example);
@@ -17,8 +16,6 @@ public interface UserMapper {
 
     int insertSelective(User record);
 
-    List<User> selectByExampleWithRowbounds(UserExample example, RowBounds rowBounds);
-
     List<User> selectByExample(UserExample example);
 
     User selectByPrimaryKey(String id);
@@ -30,8 +27,4 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-
-    Long sumByExample(UserExample example);
-
-    void batchInsert(@Param("items") List<User> items);
 }

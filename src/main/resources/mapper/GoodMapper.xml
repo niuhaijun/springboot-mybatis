@@ -85,9 +85,6 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
-    <if test="offset != null and limit != null">
-      limit ${offset}, ${limit}
-    </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -201,9 +198,6 @@
       <if test="record.used != null" >
         used = #{record.used,jdbcType=INTEGER},
       </if>
-      <if test="record.updateSql != null" >
-        ${record.updateSql},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,37 +255,4 @@
       used = #{used,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.GoodExample" id="selectByExampleWithRowbounds" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from spring_boot_mybatis_good
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="sumByExample" parameterType="com.niu.springbootmybatis.model.GoodExample" resultType="long" >
-    select sum(${sumCol}) from spring_boot_mybatis_good
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <insert id="batchInsert">
-    <if test="items.get(0) != null">
-            insert into spring_boot_mybatis_good  (id, type, name, 
-        price, num, create_time, 
-        update_time, used)
-      values
-      <foreach collection="items" item="item" index="index" separator=",">
-      (#{item.id,jdbcType=VARCHAR}, #{item.type,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR}, 
-        #{item.price,jdbcType=DOUBLE}, #{item.num,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
-        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.used,jdbcType=INTEGER})
-      </foreach>
-    </if>
-  </insert>
 </mapper>

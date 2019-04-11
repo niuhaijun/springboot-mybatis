@@ -82,9 +82,6 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
-    <if test="offset != null and limit != null">
-      limit ${offset}, ${limit}
-    </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.OrderKey" >
     select 
@@ -171,9 +168,6 @@
       <if test="record.used != null" >
         used = #{record.used,jdbcType=INTEGER},
       </if>
-      <if test="record.updateSql != null" >
-        ${record.updateSql},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -214,35 +208,4 @@
     where user_id = #{userId,jdbcType=VARCHAR}
       and good_id = #{goodId,jdbcType=VARCHAR}
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.OrderExample" id="selectByExampleWithRowbounds" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from spring_boot_mybatis_order
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="sumByExample" parameterType="com.niu.springbootmybatis.model.OrderExample" resultType="long" >
-    select sum(${sumCol}) from spring_boot_mybatis_order
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <insert id="batchInsert">
-    <if test="items.get(0) != null">
-            insert into spring_boot_mybatis_order  (user_id, good_id, create_time, 
-        update_time, used)
-      values
-      <foreach collection="items" item="item" index="index" separator=",">
-      (#{item.userId,jdbcType=VARCHAR}, #{item.goodId,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
-        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.used,jdbcType=INTEGER})
-      </foreach>
-    </if>
-  </insert>
 </mapper>

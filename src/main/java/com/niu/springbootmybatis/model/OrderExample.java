@@ -11,12 +11,6 @@ public class OrderExample {
 
     protected List<Criteria> oredCriteria;
 
-    private String sumCol;
-
-    private Integer offset;
-
-    private Integer limit;
-
     public OrderExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -68,64 +62,6 @@ public class OrderExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
-        this.sumCol = null;
-        this.offset = null;
-        this.limit = null;
-    }
-
-    public String getSumCol() {
-        return this.sumCol;
-    }
-
-    public void setSumCol(String sumCol) {
-        this.sumCol = sumCol;
-    }
-
-    public OrderExample sumUserId() {
-        this.sumCol="user_id";
-        return this;
-    }
-
-    public OrderExample sumGoodId() {
-        this.sumCol="good_id";
-        return this;
-    }
-
-    public OrderExample sumCreateTime() {
-        this.sumCol="create_time";
-        return this;
-    }
-
-    public OrderExample sumUpdateTime() {
-        this.sumCol="update_time";
-        return this;
-    }
-
-    public OrderExample sumUsed() {
-        this.sumCol="used";
-        return this;
-    }
-
-    public Integer getOffset() {
-        return this.offset;
-    }
-
-    public void setOffset(Integer offset) {
-        this.offset = offset;
-    }
-
-    public Integer getLimit() {
-        return this.limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
-
-    public OrderExample page(int offset, int limit) {
-        this.offset = offset;
-        this.limit = limit;
-        return this;
     }
 
     protected abstract static class GeneratedCriteria {
@@ -486,11 +422,6 @@ public class OrderExample {
 
         public Criteria andUsedNotBetween(Integer value1, Integer value2) {
             addCriterion("used not between", value1, value2, "used");
-            return (Criteria) this;
-        }
-
-        public Criteria addConditionSql(String conditionSql) {
-            addCriterion(conditionSql);
             return (Criteria) this;
         }
     }

@@ -22,8 +22,6 @@ public class Good implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String updateSql;
-
     public String getId() {
         return id;
     }
@@ -105,13 +103,5 @@ public class Good implements Serializable {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
-    }
-
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
-
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
     }
 }

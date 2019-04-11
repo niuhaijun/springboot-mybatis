@@ -11,12 +11,6 @@ public class GoodExample {
 
     protected List<Criteria> oredCriteria;
 
-    private String sumCol;
-
-    private Integer offset;
-
-    private Integer limit;
-
     public GoodExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -68,79 +62,6 @@ public class GoodExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
-        this.sumCol = null;
-        this.offset = null;
-        this.limit = null;
-    }
-
-    public String getSumCol() {
-        return this.sumCol;
-    }
-
-    public void setSumCol(String sumCol) {
-        this.sumCol = sumCol;
-    }
-
-    public GoodExample sumId() {
-        this.sumCol="id";
-        return this;
-    }
-
-    public GoodExample sumType() {
-        this.sumCol="type";
-        return this;
-    }
-
-    public GoodExample sumName() {
-        this.sumCol="name";
-        return this;
-    }
-
-    public GoodExample sumPrice() {
-        this.sumCol="price";
-        return this;
-    }
-
-    public GoodExample sumNum() {
-        this.sumCol="num";
-        return this;
-    }
-
-    public GoodExample sumCreateTime() {
-        this.sumCol="create_time";
-        return this;
-    }
-
-    public GoodExample sumUpdateTime() {
-        this.sumCol="update_time";
-        return this;
-    }
-
-    public GoodExample sumUsed() {
-        this.sumCol="used";
-        return this;
-    }
-
-    public Integer getOffset() {
-        return this.offset;
-    }
-
-    public void setOffset(Integer offset) {
-        this.offset = offset;
-    }
-
-    public Integer getLimit() {
-        return this.limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
-
-    public GoodExample page(int offset, int limit) {
-        this.offset = offset;
-        this.limit = limit;
-        return this;
     }
 
     protected abstract static class GeneratedCriteria {
@@ -681,11 +602,6 @@ public class GoodExample {
 
         public Criteria andUsedNotBetween(Integer value1, Integer value2) {
             addCriterion("used not between", value1, value2, "used");
-            return (Criteria) this;
-        }
-
-        public Criteria addConditionSql(String conditionSql) {
-            addCriterion(conditionSql);
             return (Criteria) this;
         }
     }

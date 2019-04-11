@@ -12,8 +12,6 @@ public class Order extends OrderKey implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String updateSql;
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -50,13 +48,5 @@ public class Order extends OrderKey implements Serializable {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
-    }
-
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
-
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
     }
 }
