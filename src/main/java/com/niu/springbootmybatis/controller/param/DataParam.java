@@ -25,7 +25,7 @@ public class DataParam {
   private Date endTime;
 
   @NotBlank
-  @Pattern(regexp = "speechRecording|imageAnnotation", message = "取值范围是speechRecording, imageAnnotation")
+  @Pattern(regexp = "1|2", message = "取值范围是1,2")
   private String taskType;
 
 }

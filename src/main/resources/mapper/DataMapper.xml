@@ -256,14 +256,14 @@
     (<include refid="buildTmpTableSQL"/>) AS tmp
     <where>
       <choose>
-        <when test="taskType == 'imageAnnotation'">
-          AND task_type = 'imageAnnotation'
+        <when test="taskType == '1'.toString()">
+          AND task_type = '1'
         </when>
-        <when test="taskType == 'speechRecording'">
-          AND task_type = 'speechRecording'
+        <when test="taskType == '2'.toString()">
+          AND task_type = '2'
         </when>
         <otherwise>
-          AND task_type = 'imageAnnotation'
+          AND task_type = '1'
         </otherwise>
       </choose>
       <choose>
