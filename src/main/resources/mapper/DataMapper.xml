@@ -86,7 +86,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.DataKey" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from spring_boot_mybatis_data
     where `date` = #{date,jdbcType=DATE}
@@ -104,9 +104,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.niu.springbootmybatis.model.Data" >
-    insert into spring_boot_mybatis_data (`date`, task_id, task_type, 
+    insert into spring_boot_mybatis_data (`date`, task_id, task_type,
       num, create_time)
-    values (#{date,jdbcType=DATE}, #{taskId,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, 
+    values (#{date,jdbcType=DATE}, #{taskId,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR},
       #{num,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.Data" >
@@ -263,18 +263,16 @@
           AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m-%d')
         </when>
         <when test="timeType == 'weeks'.toString()">
-          AND weeks <![CDATA[ >= ]]> DATE_FORMAT(DATE_ADD(#{startTime, jdbcType=VARCHAR},
-          INTERVAL-WEEKDAY(#{startTime, jdbcType=VARCHAR}) DAY), '%Y-%m-%d')
-          AND weeks <![CDATA[ <= ]]> DATE_FORMAT(DATE_ADD(#{endTime, jdbcType=VARCHAR},
-          INTERVAL-WEEKDAY(#{endTime, jdbcType=VARCHAR}) DAY), '%Y-%m-%d')
+          AND weeks <![CDATA[ >= ]]> DATE_FORMAT(DATE_ADD(#{startTime}, INTERVAL -WEEKDAY(#{startTime}) DAY), '%Y-%m-%d')
+          AND weeks <![CDATA[ <= ]]> DATE_FORMAT(DATE_ADD(#{endTime}, INTERVAL -WEEKDAY(#{endTime}) DAY), '%Y-%m-%d')
         </when>
         <when test="timeType == 'months'.toString()">
-          AND months <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m')
-          AND months <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m')
+          AND months <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime}), '%Y-%m')
+          AND months <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime}), '%Y-%m')
         </when>
         <otherwise>
-          AND days <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime, jdbcType=VARCHAR}), '%Y-%m-%d')
-          AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m-%d')
+          AND days <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime}), '%Y-%m-%d')
+          AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime}), '%Y-%m-%d')
         </otherwise>
       </choose>
     </where>
