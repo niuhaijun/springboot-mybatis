@@ -43,7 +43,7 @@ mybatis:
   #注意：对应实体类的路径
   #在本项目中，配置该属性会导致异常，具体原因未知，可能是本项目中自动代码生成插件导致的，不建议配置】
   #有无本配置，本项目都可运行
-  type-aliases-package: com.niu.springbootmybatis.model
+  #type-aliases-package: com.niu.springbootmybatis.model
   cache-enabled: true
   default-statement-timeout: 10000
   map-underscore-to-camel-case: true
