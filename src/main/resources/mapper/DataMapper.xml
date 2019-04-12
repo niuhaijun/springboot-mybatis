@@ -251,7 +251,7 @@
     <where>
       <choose>
         <when test="taskType != null">
-          AND task_type = ${taskType}
+          AND task_type = #{taskType}
         </when>
         <otherwise>
           AND task_type = '1'
@@ -263,8 +263,8 @@
           AND days <![CDATA[ <= ]]> DATE_FORMAT(DATE(#{endTime, jdbcType=VARCHAR}), '%Y-%m-%d')
         </when>
         <when test="timeType == 'weeks'.toString()">
-          AND weeks <![CDATA[ >= ]]> DATE_FORMAT(DATE_ADD(#{startTime}, INTERVAL -WEEKDAY(#{startTime}) DAY), '%Y-%m-%d')
-          AND weeks <![CDATA[ <= ]]> DATE_FORMAT(DATE_ADD(#{endTime}, INTERVAL -WEEKDAY(#{endTime}) DAY), '%Y-%m-%d')
+          AND weeks <![CDATA[ >= ]]> DATE_FORMAT(DATE_ADD(#{startTime}, INTERVAL - WEEKDAY(#{startTime}) DAY), '%Y-%m-%d')
+          AND weeks <![CDATA[ <= ]]> DATE_FORMAT(DATE_ADD(#{endTime}, INTERVAL - WEEKDAY(#{endTime}) DAY), '%Y-%m-%d')
         </when>
         <when test="timeType == 'months'.toString()">
           AND months <![CDATA[ >= ]]> DATE_FORMAT(DATE(#{startTime}), '%Y-%m')

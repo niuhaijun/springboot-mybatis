@@ -34,5 +34,10 @@ public interface DataMapper {
 
     int updateByPrimaryKey(Data record);
 
+    /**
+     * 动态SQL，涉及的内容有很多
+     *  1、与字符串常量做比较
+     *  2、#与$的区别，例如：动态拼接SQL(表，字段，order by 等)要用$
+     */
     List<DataVO> analysisData(DataParam param);
 }
