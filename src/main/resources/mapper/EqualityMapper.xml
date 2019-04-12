@@ -235,8 +235,9 @@
         test="name != null and name == 0"               OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE `name` = ? ORDER BY type
         test="name != null and type == '0'"             NO: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality ORDER BY type
         test="name != null and type == '0'.toString()"  OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE `name` = ? ORDER BY type
+        test='name != null and name == "0"'             OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE `name` = ? ORDER BY type
       -->
-      <if test="name != null and name == '0'.toString()">
+      <if test='name != null and name == "0"'>
         AND `name` = #{name}
       </if>
 
