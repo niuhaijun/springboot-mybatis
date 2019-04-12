@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niu.springbootmybatis.mapper.EqualityMapper" >
+  <resultMap id="BaseResultMap" type="com.niu.springbootmybatis.model.Equality" >
+    <constructor >
+      <idArg column="uuid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uuid, `type`, `name`, create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.EqualityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spring_boot_mybatis_equality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from spring_boot_mybatis_equality
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from spring_boot_mybatis_equality
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.niu.springbootmybatis.model.EqualityExample" >
+    delete from spring_boot_mybatis_equality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.niu.springbootmybatis.model.Equality" >
+    insert into spring_boot_mybatis_equality (uuid, `type`, `name`, 
+      create_time)
+    values (#{uuid,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.Equality" >
+    insert into spring_boot_mybatis_equality
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="type != null" >
+        `type`,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.niu.springbootmybatis.model.EqualityExample" resultType="java.lang.Integer" >
+    select count(*) from spring_boot_mybatis_equality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update spring_boot_mybatis_equality
+    <set >
+      <if test="record.uuid != null" >
+        uuid = #{record.uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        `type` = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update spring_boot_mybatis_equality
+    set uuid = #{record.uuid,jdbcType=VARCHAR},
+      `type` = #{record.type,jdbcType=INTEGER},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niu.springbootmybatis.model.Equality" >
+    update spring_boot_mybatis_equality
+    <set >
+      <if test="type != null" >
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niu.springbootmybatis.model.Equality" >
+    update spring_boot_mybatis_equality
+    set `type` = #{type,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.EqualityExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spring_boot_mybatis_equality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
+  <select id="testEquals" parameterType="com.niu.springbootmybatis.model.Equality"
+    resultType="com.niu.springbootmybatis.model.Equality">
+    SELECT uuid, `type`, `name`, create_time AS createTime
+    FROM  spring_boot_mybatis_equality
+    <where>
+
+      <!--
+      type在数据库中类型是int
+
+        test="type != null and type == 0"               OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE type = ? ORDER BY type
+        test="type != null and type == '0'"             NO: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality ORDER BY type
+        test="type != null and type == '0'.toString()"  OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE type = ? ORDER BY type
+      -->
+      <if test="type != null and type == 0">
+        AND type = #{type}
+      </if>
+
+
+      <!--
+      name在数据库中的类型是varchar
+
+        test="name != null and name == 0"               OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE `name` = ? ORDER BY type
+        test="name != null and type == '0'"             NO: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality ORDER BY type
+        test="name != null and type == '0'.toString()"  OK: SELECT uuid, `type`, `name`, create_time FROM spring_boot_mybatis_equality WHERE `name` = ? ORDER BY type
+      -->
+      <if test="name != null and name == '0'.toString()">
+        AND `name` = #{name}
+      </if>
+
+    </where>
+    ORDER BY type
+  </select>
+</mapper>
