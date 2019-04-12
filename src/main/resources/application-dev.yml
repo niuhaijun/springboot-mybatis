@@ -32,6 +32,11 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       #合并多个DruidDataSource的监控数据
       useGlobalDataSourceStat: true
+  #热部署
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: mapper
 
 
 
@@ -51,12 +56,6 @@ mybatis:
   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
-#控制台打印SQL
-logging:
-  level:
-    com.niu.springbootmybatis.mapper: debug
-
-
 
 pagehelper:
   helperDialect: mysql
@@ -64,3 +63,11 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
   returnPageInfo: check
+
+
+
+
+#控制台打印SQL
+logging:
+  level:
+    com.niu.springbootmybatis.mapper: debug
