@@ -54,6 +54,8 @@ mybatis:
   map-underscore-to-camel-case: true
   use-generated-keys: true
   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #类型转化器(javaType <--> jdbcType 类型互换)
+  type-handlers-package: com.niu.springbootmybatis.typehandlers
 
 
 

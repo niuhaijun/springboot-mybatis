@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 12/04/2019 19:47:10
+ Date: 20/08/2019 15:52:02
 */
 
 SET NAMES utf8mb4;
@@ -1763,6 +1763,25 @@ INSERT INTO `spring_boot_mybatis_user` VALUES ('e49f5669fa234d22a8f12715c62ba97e
 INSERT INTO `spring_boot_mybatis_user` VALUES ('e553a095d08e4293aecc068549fadd41', '1', '1', '2019-04-11 17:19:59', '2019-04-11 17:19:59', 1);
 INSERT INTO `spring_boot_mybatis_user` VALUES ('f6a46e3bbea14654aa43b42a388b9f3f', '1', '1', '2019-04-11 16:16:51', '2019-04-11 16:16:51', 1);
 INSERT INTO `spring_boot_mybatis_user` VALUES ('f9952f75484a482d80d503d7b3c13ca2', '1', '1', '2019-04-11 17:14:40', '2019-04-11 17:14:40', 1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for typehandler_enum
+-- ----------------------------
+DROP TABLE IF EXISTS `typehandler_enum`;
+CREATE TABLE `typehandler_enum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `status` varchar(11) NOT NULL COMMENT '任务状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of typehandler_enum
+-- ----------------------------
+BEGIN;
+INSERT INTO `typehandler_enum` VALUES (1, '100');
+INSERT INTO `typehandler_enum` VALUES (2, '100');
+INSERT INTO `typehandler_enum` VALUES (3, '100');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niu.springbootmybatis.mapper.TypeHandlerEnumMapper">
+
+
+  <insert id="save" parameterType="com.niu.springbootmybatis.model.Task">
+    insert into typehandler_enum(`id`, `status`)
+    values (#{id}, #{status});
+  </insert>
+
+  <select id="queryAll" resultType="com.niu.springbootmybatis.model.Task">
+    select * from typehandler_enum
+  </select>
+
+
+</mapper>
