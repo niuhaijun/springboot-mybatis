@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 
@@ -15,13 +16,15 @@ import org.apache.ibatis.type.TypeHandler;
  * https://my.oschina.net/fengwenyi/blog/1834812
  *
  *
- *
- *
  * @Author: niuhaijun
  * @Date: 2019-08-20 15:27
  * @Version 1.0
  */
+// 指定JavaType
 @MappedTypes({Status.class})
+
+// 指定jdbcType,可以忽略
+// @MappedJdbcTypes(JdbcType.VARCHAR)
 public class StatusTypeHandler implements TypeHandler<Status> {
 
 
