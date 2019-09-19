@@ -30,17 +30,33 @@ public class ApplicationTest {
   @Test
   public void test() {
 
-    ExecutorService threadPool = Executors.newFixedThreadPool(3);
+    ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
+    int j = 1;
     while (true) {
-      for (int i = 1; i <= 3; i++) {
 
+      {
         RepalceDeadLock deadLock = new RepalceDeadLock();
-        deadLock.setFid(i);
+        deadLock.setFid(1);
         deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
-
         threadPool.execute(() -> mapper.replace(Collections.singletonList(deadLock)));
       }
+
+      {
+        RepalceDeadLock deadLock = new RepalceDeadLock();
+        deadLock.setFid(2);
+        deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
+        threadPool.execute(() -> mapper.replace(Collections.singletonList(deadLock)));
+      }
+
+//      for (int i = 1; i <= 4; i++) {
+//
+//        RepalceDeadLock deadLock = new RepalceDeadLock();
+//        deadLock.setFid(i);
+//        deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
+//
+//        threadPool.execute(() -> mapper.replace(Collections.singletonList(deadLock)));
+//      }
     }
   }
 }
