@@ -270,7 +270,8 @@
 <!--    <table tableName="spring_boot_mybatis_good" domainObjectName="Good"></table>-->
 <!--    <table tableName="spring_boot_mybatis_order" domainObjectName="Order"></table>-->
 <!--    <table tableName="spring_boot_mybatis_data" domainObjectName="Data"></table>-->
-    <table tableName="spring_boot_mybatis_equality" domainObjectName="Equality"></table>
+<!--    <table tableName="spring_boot_mybatis_equality" domainObjectName="Equality"></table>-->
+    <table tableName="repalce_dead_lock" domainObjectName="RepalceDeadLock"></table>
 
   </context>
 </generatorConfiguration>

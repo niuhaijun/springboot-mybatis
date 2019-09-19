@@ -1,4 +1,4 @@
-package com.niu.springbootmybatis;
+package com.niu.springbootmybatis.typehandler;
 
 import com.niu.springbootmybatis.mapper.TypeHandlerEnumMapper;
 import com.niu.springbootmybatis.model.Task;
@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * TypeHandler用于数据类型转化
+ *
+ *
  * @Author: niuhaijun
  * @Date: 2019-08-20 15:10
  * @Version 1.0
