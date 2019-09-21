@@ -31,5 +31,8 @@ public interface RepalceDeadLockMapper {
 
     int updateByPrimaryKey(RepalceDeadLock record);
 
+
+
     int replace(@Param("repalceDeadLockList") List<RepalceDeadLock> repalceDeadLockList);
+    int batchInsert(@Param("repalceDeadLockList") List<RepalceDeadLock> repalceDeadLockList);
 }

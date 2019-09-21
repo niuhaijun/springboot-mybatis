@@ -204,6 +204,14 @@
     </foreach>
   </insert>
 
+  <insert id="batchInsert">
+    insert into repalce_dead_lock(fid, content)
+    values
+    <foreach collection="repalceDeadLockList" item="item"  separator="," >
+      (#{item.fid}, #{item.content})
+    </foreach>
+  </insert>
+
 
 
 
