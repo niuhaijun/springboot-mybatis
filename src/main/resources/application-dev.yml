@@ -7,7 +7,8 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/spring_boot_mybatis?useSSL=FALSE&allowMultiQueries=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
       username: root
-      password: '!@#$1234Abcd' #密码中有特殊字符，需要用''
+#      password: '!@#$1234Abcd' #密码中有特殊字符，需要用''
+      password: root
       #初始化大小、最小、最大
       initialSize: 10
       minIdle: 10

@@ -27,7 +27,7 @@ CREATE TABLE `repalce_dead_lock` (
   `content` varchar(32) NOT NULL COMMENT '内容',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_fid` (`fid`) USING BTREE COMMENT '唯一索引'
-) ENGINE=InnoDB AUTO_INCREMENT=5521 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of repalce_dead_lock
