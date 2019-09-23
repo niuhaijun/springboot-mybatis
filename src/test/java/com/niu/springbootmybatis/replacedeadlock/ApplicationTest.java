@@ -3,6 +3,7 @@ package com.niu.springbootmybatis.replacedeadlock;
 import com.niu.springbootmybatis.mapper.RepalceDeadLockMapper;
 import com.niu.springbootmybatis.model.RepalceDeadLock;
 import com.niu.springbootmybatis.model.RepalceDeadLockExample;
+import com.niu.springbootmybatis.service.DeadLockService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +31,9 @@ public class ApplicationTest {
   @Autowired
   private RepalceDeadLockMapper mapper;
 
+  @Autowired
+  private DeadLockService deadLockService;
+
   /**
    * 数据量
    */
@@ -37,7 +41,7 @@ public class ApplicationTest {
 
 
   /**
-   * 死锁演示
+   * replace死锁演示
    */
   @Test
   public void test() {
@@ -46,6 +50,13 @@ public class ApplicationTest {
 
     while (true) {
 
+//      try {
+//        Thread.sleep(10);
+//      }
+//      catch (InterruptedException e) {
+//        e.printStackTrace();
+//      }
+
       for (int fid = 1; fid <= 2; fid++) {
 
         RepalceDeadLock deadLock = new RepalceDeadLock();
@@ -53,6 +64,33 @@ public class ApplicationTest {
         deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
 
         threadPool.execute(() -> mapper.replace(Collections.singletonList(deadLock)));
+
+//        threadPool.execute(() -> deadLockService.replace(Collections.singletonList(deadLock)));
+
+//        threadPool.execute(() -> deadLockService.deleteAndInsert(deadLock));
+
+      }
+    }
+  }
+
+
+  /**
+   * insert死锁演示
+   */
+  @Test
+  public void insetWithUpdate() {
+
+    ExecutorService threadPool = Executors.newFixedThreadPool(2);
+
+    while (true) {
+
+      for (int fid = 1; fid <= 3; fid++) {
+
+        RepalceDeadLock deadLock = new RepalceDeadLock();
+        deadLock.setFid(fid);
+        deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
+
+        threadPool.execute(() -> mapper.insertWithUpdate(deadLock));
       }
     }
   }
