@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * 可以在mapper文件中直接使用null 或者 ""
+ *
  * @Author: niuhaijun
  * @Date: 2019-09-29 19:31
  * @Version 1.0
