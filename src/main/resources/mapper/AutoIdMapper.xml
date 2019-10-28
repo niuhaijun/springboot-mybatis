@@ -232,4 +232,26 @@
   </insert>
 
 
+  <insert id="insertSelectiveWithParam"
+    parameterType="com.niu.springbootmybatis.model.AutoId" >
+    insert into spring_boot_auto_id
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pa.autoId != null" >
+        auto_id,
+      </if>
+      <if test="pa.content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pa.autoId != null" >
+        #{pa.autoId,jdbcType=INTEGER},
+      </if>
+      <if test="pa.content != null" >
+        #{pa.content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
 </mapper>

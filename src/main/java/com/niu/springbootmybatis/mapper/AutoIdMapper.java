@@ -35,6 +35,7 @@ public interface AutoIdMapper {
 
     int insertSelective(AutoId record);
 
+    int insertSelectiveWithParam(@Param("pa") AutoId record);
 
 
 
