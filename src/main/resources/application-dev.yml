@@ -46,12 +46,16 @@ spring:
 mybatis:
   #注意：一定要对应mapper映射xml文件的所在路径
   mapper-locations: classpath:mapper/*.xml
-  #注意：对应实体类的路径
-  #在本项目中，配置该属性会导致异常，具体原因未知，可能是本项目中自动代码生成插件导致的，不建议配置】
-  #有无本配置，本项目都可运行
+
+  #配置包的别名，配置完成以后只要使用类名即可，不用类的全限定类名。
+  # 有无本配置，本项目都可运行
   #type-aliases-package: com.niu.springbootmybatis.model
+
   cache-enabled: true
+
   default-statement-timeout: 10000
+
+  # 将以下划线方式命名的数据库列映射到Java对象的驼峰命名属性中
   map-underscore-to-camel-case: true
   use-generated-keys: true
   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
