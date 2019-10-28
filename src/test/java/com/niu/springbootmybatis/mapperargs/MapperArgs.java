@@ -2,6 +2,8 @@ package com.niu.springbootmybatis.mapperargs;
 
 import com.niu.springbootmybatis.mapper.AutoIdMapper;
 import com.niu.springbootmybatis.model.AutoId;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,19 +52,22 @@ public class MapperArgs {
   // 单个，javabean 使用@Param
   @Test
   public void test3() {
+
     AutoId record = new AutoId();
     record.setContent("anc");
     int count = mapper.insertSelectiveWithParam(record);
     System.out.println(count);
   }
 
-
-
-
-  // 多个参数时，最好使用 @Param
   @Test
   public void test() {
 
+    Map<String, Object> map = new HashMap<>();
+    map.put("p1", 0);
+    map.put("p2", "abcd");
+
+    int count = mapper.insertSelectiveWithMap(map);
+    System.out.println(count);
   }
 
 }

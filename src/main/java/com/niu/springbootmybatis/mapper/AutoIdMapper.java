@@ -3,6 +3,7 @@ package com.niu.springbootmybatis.mapper;
 import com.niu.springbootmybatis.model.AutoId;
 import com.niu.springbootmybatis.model.AutoIdExample;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
@@ -36,6 +37,8 @@ public interface AutoIdMapper {
     int insertSelective(AutoId record);
 
     int insertSelectiveWithParam(@Param("pa") AutoId record);
+    int insertSelectiveWithMap(Map<String, Object> map);
+
 
 
 

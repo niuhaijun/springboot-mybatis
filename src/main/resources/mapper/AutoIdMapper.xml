@@ -254,4 +254,25 @@
   </insert>
 
 
+  <insert id="insertSelectiveWithMap" parameterType = "map">
+    insert into spring_boot_auto_id
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="p1 != null" >
+        auto_id,
+      </if>
+      <if test="p2 != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="p1 != null" >
+        #{p1,jdbcType=INTEGER},
+      </if>
+      <if test="p2 != null" >
+        #{p2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
 </mapper>
