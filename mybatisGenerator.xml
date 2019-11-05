@@ -9,13 +9,16 @@
   2、https://blog.csdn.net/m0_37961948/article/details/78900869
   3、http://www.mybatis.org/generator/index.html
   4、https://www.cnblogs.com/xiaoheike/p/7569681.html
+  5、mybatis从入门到精通
 -->
 <generatorConfiguration>
 
   <!--
   引入配置文件，在<context>中就可以引用相应的设置。可选
+
+  配置文件一般存放在source目录下，我们存在了source/mbg目录下
   -->
-  <!--  <properties resource="mybatis-generator/mybatisGeneratorInit.properties"/>-->
+  <properties resource="mbg/mbg.properties"/>
 
 
   <!--
@@ -41,7 +44,7 @@
 
   introspectedColumnImpl：类全限定名，用于扩展MBG
   -->
-  <context id="admin" targetRuntime="MyBatis3">
+  <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
 
     <!-- 1 property -->
     <!--
@@ -91,8 +94,7 @@
     -->
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>
-    <plugin
-      type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
+    <plugin type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.PaginationPlugin"/>
@@ -116,10 +118,11 @@
 
     <!-- 4 jdbcConnection
     jdbc的数据库连接-->
-    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-      connectionURL="jdbc:mysql://localhost:3306/spring_boot_mybatis?characterEncoding=UTF-8&amp;useSSL=false"
-      userId="root"
-      password="!@#$1234Abcd">
+    <jdbcConnection driverClass="${driver-class}"
+      connectionURL="${connection-url}"
+      userId="${user-id}"
+      password="${password}">
+
       <!--      防止重复生成MySQL中相同表名的mapper文件-->
       <property name="nullCatalogMeansCurrent" value="true"/>
     </jdbcConnection>
@@ -149,7 +152,7 @@
     targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
     targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
     -->
-    <javaModelGenerator targetPackage="com.niu.springbootmybatis.model"
+    <javaModelGenerator targetPackage="${java-model}"
       targetProject="src/main/java">
       <!--
       是否对model添加【构造函数】，for MyBatis3/MyBatis3Simple
@@ -215,7 +218,7 @@
       3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
       注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
     -->
-    <javaClientGenerator targetPackage="com.niu.springbootmybatis.mapper"
+    <javaClientGenerator targetPackage="${java-mapper}"
       targetProject="src/main/java" type="XMLMAPPER">
       <!--
       在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false
@@ -278,7 +281,8 @@
     <!--    <table tableName="spring_boot_mybatis_equality" domainObjectName="Equality"></table>-->
     <!--    <table tableName="repalce_dead_lock" domainObjectName="RepalceDeadLock"></table>-->
     <!--    <table tableName="null_empty" domainObjectName="NullEmpty"></table>-->
-    <table tableName="spring_boot_auto_id" domainObjectName="AutoId"></table>
+<!--    <table tableName="spring_boot_auto_id" domainObjectName="AutoId"></table>-->
+    <table tableName="t_mbg" domainObjectName="MBG"></table>
 
 
   </context>
