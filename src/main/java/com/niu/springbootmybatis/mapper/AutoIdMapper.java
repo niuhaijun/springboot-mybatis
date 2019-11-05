@@ -40,7 +40,7 @@ public interface AutoIdMapper {
     int insertSelectiveWithParam(@Param("pa") AutoId record);
     int insertSelectiveWithMap(Map<String, Object> map);
     int insertSelectiveWithParams(@Param("myId") Integer id, @Param("myContent") String content);
-
+    int selectWithDefault(AutoId record);
 
 
 

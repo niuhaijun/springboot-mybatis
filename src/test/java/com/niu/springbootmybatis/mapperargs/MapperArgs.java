@@ -80,5 +80,15 @@ public class MapperArgs {
     System.out.println(count);
   }
 
+  // 默认参数 _parameter
+  @Test
+  public void test6() {
+
+    int count = mapper.selectWithDefault(null);
+    System.out.println(count);
+
+    int count1 = mapper.selectWithDefault(new AutoId(1, null));
+    System.out.println(count1);
+  }
 
 }
