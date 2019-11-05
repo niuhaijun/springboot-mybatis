@@ -243,6 +243,21 @@
   </insert>
 
 
+  <insert id="batchInsertAndGetAutoId"
+    useGeneratedKeys="true"
+    keyProperty="autoId"
+    keyColumn="auto_id">
+
+    <if test="myList.get(0) != null">
+      insert into spring_boot_auto_id (auto_id, content)
+      values
+      <foreach collection="myList" item="item" index="index" separator=",">
+        (#{item.autoId,jdbcType=INTEGER}, #{item.content,jdbcType=VARCHAR})
+      </foreach>
+    </if>
+  </insert>
+
+
   <insert id="insertSelectiveWithParam"
     parameterType="com.niu.springbootmybatis.model.AutoId">
     insert into spring_boot_auto_id

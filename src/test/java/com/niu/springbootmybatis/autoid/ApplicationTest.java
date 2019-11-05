@@ -1,10 +1,9 @@
 package com.niu.springbootmybatis.autoid;
 
 import com.niu.springbootmybatis.mapper.AutoIdMapper;
-import com.niu.springbootmybatis.mapper.TypeHandlerEnumMapper;
 import com.niu.springbootmybatis.model.AutoId;
-import com.niu.springbootmybatis.model.Task;
-import com.niu.springbootmybatis.model.enums.Status;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,6 @@ public class ApplicationTest {
 
   @Autowired
   private AutoIdMapper mapper;
-
 
   /**
    * SQL
@@ -61,5 +59,25 @@ public class ApplicationTest {
     ele.setContent("123");
     int count = mapper.insertAndGetAutoIncrementId(ele);
     System.out.println(count + " --> " + ele.getAutoId());
+  }
+
+
+  /**
+   * 批量新增会写主键值的功能
+   *
+   * mybatis 3.3.1开始支持
+   */
+  @Test
+  public void test_3() {
+
+    List<AutoId> list = new ArrayList<>(3);
+    for (int i = 0; i < 3; i++) {
+      list.add(new AutoId(null, "" + i));
+    }
+
+    int num = mapper.batchInsertAndGetAutoId(list);
+    System.out.println(num);
+
+    list.stream().map(AutoId::toString).forEach(System.out::println);
   }
 }

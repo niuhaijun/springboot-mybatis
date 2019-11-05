@@ -46,4 +46,5 @@ public interface AutoIdMapper {
 
     int insertAndGetAutoIncId(AutoId record);
     int insertAndGetAutoIncrementId(AutoId record);
+    int batchInsertAndGetAutoId(@Param("myList") List<AutoId> list);
 }
