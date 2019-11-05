@@ -51,6 +51,13 @@ public class ApplicationTest {
   public void test_2() {
 
     AutoId ele = new AutoId();
+
+    /**
+     * 如果ID有值，返回的自增ID为0
+     *
+     * 并且会插入成功
+     */
+    ele.setAutoId(null);
     ele.setContent("123");
     int count = mapper.insertAndGetAutoIncrementId(ele);
     System.out.println(count + " --> " + ele.getAutoId());

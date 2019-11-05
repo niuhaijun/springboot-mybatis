@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * 接口参数的个数
  *
- * 注意mapper中的参数名称
+ * 注意mapper 接口中中的参数名称
  *
  *
  * @Author: niuhaijun
@@ -59,8 +59,10 @@ public class MapperArgs {
     System.out.println(count);
   }
 
+
+  // 多个参数，并封装为Map, 在mapper.xml中使用key
   @Test
-  public void test() {
+  public void test4() {
 
     Map<String, Object> map = new HashMap<>();
     map.put("p1", 0);
@@ -69,5 +71,14 @@ public class MapperArgs {
     int count = mapper.insertSelectiveWithMap(map);
     System.out.println(count);
   }
+
+  // 多个参数 使用@Param
+  @Test
+  public void test5() {
+
+    int count = mapper.insertSelectiveWithParams(null, "acd");
+    System.out.println(count);
+  }
+
 
 }

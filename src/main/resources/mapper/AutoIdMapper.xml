@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.niu.springbootmybatis.mapper.AutoIdMapper" >
-  <resultMap id="BaseResultMap" type="com.niu.springbootmybatis.model.AutoId" >
-    <constructor >
-      <idArg column="auto_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niu.springbootmybatis.mapper.AutoIdMapper">
+  <resultMap id="BaseResultMap" type="com.niu.springbootmybatis.model.AutoId">
+    <constructor>
+      <idArg column="auto_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String"/>
     </constructor>
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -36,25 +38,26 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -65,148 +68,154 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     auto_id, content
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.AutoIdExample" >
+  <select id="selectByExample" resultMap="BaseResultMap"
+    parameterType="com.niu.springbootmybatis.model.AutoIdExample">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List" />
+    <include refid="Base_Column_List"/>
     from spring_boot_auto_id
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
     <if test="offset != null and limit != null">
       limit ${offset}, ${limit}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
     from spring_boot_auto_id
     where auto_id = #{autoId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from spring_boot_auto_id
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from spring_boot_auto_id
     where auto_id = #{autoId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.niu.springbootmybatis.model.AutoIdExample" >
+  <delete id="deleteByExample" parameterType="com.niu.springbootmybatis.model.AutoIdExample">
     delete from spring_boot_auto_id
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.niu.springbootmybatis.model.AutoIdExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.niu.springbootmybatis.model.AutoIdExample"
+    resultType="java.lang.Integer">
     select count(*) from spring_boot_auto_id
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update spring_boot_auto_id
-    <set >
-      <if test="record.autoId != null" >
+    <set>
+      <if test="record.autoId != null">
         auto_id = #{record.autoId,jdbcType=INTEGER},
       </if>
-      <if test="record.content != null" >
+      <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateSql != null" >
+      <if test="record.updateSql != null">
         ${record.updateSql},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update spring_boot_auto_id
     set auto_id = #{record.autoId,jdbcType=INTEGER},
-      content = #{record.content,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
+    content = #{record.content,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.niu.springbootmybatis.model.AutoId" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.niu.springbootmybatis.model.AutoId">
     update spring_boot_auto_id
-    <set >
-      <if test="content != null" >
+    <set>
+      <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
     </set>
     where auto_id = #{autoId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.niu.springbootmybatis.model.AutoId" >
+  <update id="updateByPrimaryKey" parameterType="com.niu.springbootmybatis.model.AutoId">
     update spring_boot_auto_id
     set content = #{content,jdbcType=VARCHAR}
     where auto_id = #{autoId,jdbcType=INTEGER}
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.AutoIdExample" id="selectByExampleWithRowbounds" >
+  <select resultMap="BaseResultMap" parameterType="com.niu.springbootmybatis.model.AutoIdExample"
+    id="selectByExampleWithRowbounds">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List" />
+    <include refid="Base_Column_List"/>
     from spring_boot_auto_id
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="sumByExample" parameterType="com.niu.springbootmybatis.model.AutoIdExample" resultType="long" >
+  <select id="sumByExample" parameterType="com.niu.springbootmybatis.model.AutoIdExample"
+    resultType="long">
     select sum(${sumCol}) from spring_boot_auto_id
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
     </if>
   </select>
   <insert id="batchInsert">
     <if test="items.get(0) != null">
-            insert into spring_boot_auto_id  (auto_id, content)
+      insert into spring_boot_auto_id (auto_id, content)
       values
       <foreach collection="items" item="item" index="index" separator=",">
-      (#{item.autoId,jdbcType=INTEGER}, #{item.content,jdbcType=VARCHAR})
+        (#{item.autoId,jdbcType=INTEGER}, #{item.content,jdbcType=VARCHAR})
       </foreach>
     </if>
   </insert>
 
 
-  <insert id="insert" parameterType="com.niu.springbootmybatis.model.AutoId" >
+  <insert id="insert" parameterType="com.niu.springbootmybatis.model.AutoId">
     insert into spring_boot_auto_id (auto_id, content)
     values (#{autoId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.AutoId" >
+  <insert id="insertSelective" parameterType="com.niu.springbootmybatis.model.AutoId">
     insert into spring_boot_auto_id
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="autoId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="autoId != null">
         auto_id,
       </if>
-      <if test="content != null" >
+      <if test="content != null">
         content,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="autoId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="autoId != null">
         #{autoId,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
+      <if test="content != null">
         #{content,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
 
 
-<!--  keyColumn="auto_id" 可以省略
-通过 useGeneratedKeys 获取数据库自增ID
-并设置到 AutoId 对象的 autoId 属性中
-以及 表 spring_boot_auto_id 的 auto_id列中
--->
+  <!--
+  keyColumn="auto_id" 可以省略
+  通过 useGeneratedKeys 获取数据库自增ID
+  并设置到 AutoId 对象的 autoId 属性中
+  以及 表 spring_boot_auto_id 的 auto_id列中
+  -->
   <insert id="insertAndGetAutoIncId"
     parameterType="com.niu.springbootmybatis.model.AutoId"
     useGeneratedKeys="true"
@@ -217,7 +226,9 @@
   </insert>
 
 
-<!--  keyColumn可以省略-->
+  <!--
+  keyColumn可以省略
+  -->
   <insert id="insertAndGetAutoIncrementId"
     parameterType="com.niu.springbootmybatis.model.AutoId">
     <selectKey resultType="integer"
@@ -233,43 +244,63 @@
 
 
   <insert id="insertSelectiveWithParam"
-    parameterType="com.niu.springbootmybatis.model.AutoId" >
+    parameterType="com.niu.springbootmybatis.model.AutoId">
     insert into spring_boot_auto_id
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pa.autoId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pa.autoId != null">
         auto_id,
       </if>
-      <if test="pa.content != null" >
+      <if test="pa.content != null">
         content,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pa.autoId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pa.autoId != null">
         #{pa.autoId,jdbcType=INTEGER},
       </if>
-      <if test="pa.content != null" >
+      <if test="pa.content != null">
         #{pa.content,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
 
 
-  <insert id="insertSelectiveWithMap" parameterType = "map">
+  <insert id="insertSelectiveWithMap" parameterType="map">
     insert into spring_boot_auto_id
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="p1 != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="p1 != null">
         auto_id,
       </if>
-      <if test="p2 != null" >
+      <if test="p2 != null">
         content,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="p1 != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="p1 != null">
         #{p1,jdbcType=INTEGER},
       </if>
-      <if test="p2 != null" >
+      <if test="p2 != null">
         #{p2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <insert id="insertSelectiveWithParams" parameterType="map">
+    insert into spring_boot_auto_id
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="myId != null">
+        auto_id,
+      </if>
+      <if test="myContent != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="myId != null">
+        #{myId,jdbcType=INTEGER},
+      </if>
+      <if test="myContent != null">
+        #{myContent,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
