@@ -282,7 +282,15 @@
     <!--    <table tableName="repalce_dead_lock" domainObjectName="RepalceDeadLock"></table>-->
     <!--    <table tableName="null_empty" domainObjectName="NullEmpty"></table>-->
 <!--    <table tableName="spring_boot_auto_id" domainObjectName="AutoId"></table>-->
-    <table tableName="t_mbg" domainObjectName="MBG"></table>
+<!--    <table tableName="t_mbg" domainObjectName="MBG"></table>-->
+    <table tableName="country" domainObjectName="Country"></table>
+    <table tableName="sys_dict" domainObjectName="SysDict"></table>
+    <table tableName="sys_privilege" domainObjectName="SysPrivilege"></table>
+    <table tableName="sys_role" domainObjectName="SysRole"></table>
+    <table tableName="sys_role_privilege" domainObjectName="SysRolePrivilege"></table>
+    <table tableName="sys_user" domainObjectName="SysUser"></table>
+    <table tableName="sys_user_role" domainObjectName="SysUserRole"></table>
+
 
 
   </context>
