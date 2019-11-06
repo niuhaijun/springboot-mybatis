@@ -23,14 +23,13 @@ public class HighLevelSearchTest {
   @Autowired
   private HighLevelSearchMapper mapper;
 
-
   /**
    * 1对1
    */
   @Test
   public void test1() {
 
-    SysUserVO userVO = mapper.selectUserAndRoleById(1001L);
+    SysUserVO userVO = mapper.selectUserAndRoleById1(1001L);
     log.info("userVO = {}", userVO);
   }
 

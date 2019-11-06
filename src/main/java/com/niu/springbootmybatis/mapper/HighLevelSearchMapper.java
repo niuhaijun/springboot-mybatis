@@ -17,7 +17,7 @@ public interface HighLevelSearchMapper {
    *
    * 使用自动映射处理一对一关系
    */
-  SysUserVO selectUserAndRoleById(Long id);
+  SysUserVO selectUserAndRoleById1(Long id);
 
   /**
    * 根据用户 id 获取用户信息和用户的角色信息

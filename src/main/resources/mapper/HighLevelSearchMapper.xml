@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.niu.springbootmybatis.mapper.HighLevelSearchMapper">
 
-  <select id="selectUserAndRoleById" resultType="com.niu.springbootmybatis.controller.vo.SysUserVO">
+  <select id="selectUserAndRoleById1" resultType="com.niu.springbootmybatis.controller.vo.SysUserVO">
     select u.id,
            u.user_name     userName,
            u.user_password userPassword,
@@ -23,26 +23,7 @@
     where u.id = #{id}
   </select>
 
-
-  <resultMap id="userRoleMap" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
-    <id property="id" column="id"/>
-    <result property="userName" column="user_name"/>
-    <result property="userPassword" column="user_password"/>
-    <result property="userEmail" column="user_email"/>
-    <result property="createTime" column="create_time"/>
-    <result property="userInfo" column="user_info"/>
-    <result property="headImg" column="head_img"/>
-
-    <association property="roleVO" columnPrefix="rolePre_"
-      javaType="com.niu.springbootmybatis.controller.vo.SysRoleVO">
-      <id property="id" column="id"/>
-      <result property="roleName" column="role_name"/>
-      <result property="enabled" column="enabled"/>
-      <result property="createBy" column="create_by"/>
-      <result property="createTime" column="create_time"/>
-    </association>
-  </resultMap>
-  <select id="selectUserAndRoleById2" resultMap="userRoleMap">
+  <sql id="select-user-and-role-sql">
     select u.id,
            u.user_name,
            u.user_password,
@@ -60,6 +41,27 @@
            inner join sys_user_role ur on u.id = ur.user_id
            inner join sys_role r on ur.role_id = r.id
     where u.id = #{id}
+  </sql>
+
+  <resultMap id="resultMap_0" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
+    <id property="id" column="id"/>
+    <result property="userName" column="user_name"/>
+    <result property="userPassword" column="user_password"/>
+    <result property="userEmail" column="user_email"/>
+    <result property="createTime" column="create_time"/>
+    <result property="userInfo" column="user_info"/>
+    <result property="headImg" column="head_img"/>
+
+    <association property="roleVO" columnPrefix="rolePre_" javaType="com.niu.springbootmybatis.controller.vo.SysRoleVO">
+      <id property="id" column="id"/>
+      <result property="roleName" column="role_name"/>
+      <result property="enabled" column="enabled"/>
+      <result property="createBy" column="create_by"/>
+      <result property="createTime" column="create_time"/>
+    </association>
+  </resultMap>
+  <select id="selectUserAndRoleById2" resultMap="resultMap_0">
+    <include refid="select-user-and-role-sql"/>
   </select>
 
 
@@ -88,31 +90,17 @@
     <result property="createBy" column="create_by"/>
     <result property="createTime" column="create_time"/>
   </resultMap>
-  <resultMap id="resultMap_3_1" type="com.niu.springbootmybatis.controller.vo.SysUserVO" extends="resultMap_1_1">
+  <resultMap id="resultMap_3_1" type="com.niu.springbootmybatis.controller.vo.SysUserVO"
+    extends="resultMap_1_1">
     <association property="roleVO" columnPrefix="rolePre_" resultMap="resultMap_2"/>
   </resultMap>
-  <resultMap id="resultMap_3_2" type="com.niu.springbootmybatis.controller.vo.SysUserVO" extends="resultMap_1_2">
+  <resultMap id="resultMap_3_2" type="com.niu.springbootmybatis.controller.vo.SysUserVO"
+    extends="resultMap_1_2">
     <association property="roleVO" columnPrefix="rolePre_" resultMap="resultMap_2"/>
   </resultMap>
   <select id="selectUserAndRoleById3" resultMap="resultMap_3_1">
-<!--  <select id="selectUserAndRoleById3" resultMap="resultMap_3_2">-->
-    select u.id,
-           u.user_name,
-           u.user_password,
-           u.user_email,
-           u.create_time,
-           u.user_info,
-           u.head_img,
-
-           r.id          rolePre_id,
-           r.role_name   rolePre_role_name,
-           r.enabled     rolePre_enabled,
-           r.create_by   rolePre_create_by,
-           r.create_time rolePre_create_time
-    from sys_user u
-           inner join sys_user_role ur on u.id = ur.user_id
-           inner join sys_role r on ur.role_id = r.id
-    where u.id = #{id}
+    <!--  <select id="selectUserAndRoleById3" resultMap="resultMap_3_2">-->
+    <include refid="select-user-and-role-sql"/>
   </select>
 
 
