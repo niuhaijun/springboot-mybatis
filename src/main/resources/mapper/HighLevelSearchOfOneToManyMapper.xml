@@ -71,8 +71,7 @@
     <result property="headImg" column="head_img"/>
     <result property="createTime" column="create_time"/>
 
-    <collection property="roleVOList" columnPrefix="role_"
-      ofType="com.niu.springbootmybatis.controller.vo.SysRoleVO">
+    <collection property="roleVOList" columnPrefix="role_" ofType="com.niu.springbootmybatis.controller.vo.SysRoleVO">
       <id property="id" column="id"/>
       <result property="roleName" column="role_name"/>
       <result property="enabled" column="enabled"/>
