@@ -94,7 +94,8 @@
     -->
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>
-    <plugin type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
+    <plugin
+      type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>
     <plugin type="com.github.oceanc.mybatis3.generator.plugin.PaginationPlugin"/>
@@ -281,15 +282,16 @@
     <!--    <table tableName="spring_boot_mybatis_equality" domainObjectName="Equality"></table>-->
     <!--    <table tableName="repalce_dead_lock" domainObjectName="RepalceDeadLock"></table>-->
     <!--    <table tableName="null_empty" domainObjectName="NullEmpty"></table>-->
-<!--    <table tableName="spring_boot_auto_id" domainObjectName="AutoId"></table>-->
-<!--    <table tableName="t_mbg" domainObjectName="MBG"></table>-->
-    <table tableName="country" domainObjectName="Country"></table>
-    <table tableName="sys_dict" domainObjectName="SysDict"></table>
-    <table tableName="sys_privilege" domainObjectName="SysPrivilege"></table>
-    <table tableName="sys_role" domainObjectName="SysRole"></table>
-    <table tableName="sys_role_privilege" domainObjectName="SysRolePrivilege"></table>
-    <table tableName="sys_user" domainObjectName="SysUser"></table>
-    <table tableName="sys_user_role" domainObjectName="SysUserRole"></table>
+    <!--    <table tableName="spring_boot_auto_id" domainObjectName="AutoId"></table>-->
+    <!--    <table tableName="t_mbg" domainObjectName="MBG"></table>-->
+    <!--    <table tableName="country" domainObjectName="Country"></table>-->
+    <!--    <table tableName="sys_dict" domainObjectName="SysDict"></table>-->
+    <!--    <table tableName="sys_privilege" domainObjectName="SysPrivilege"></table>-->
+    <!--    <table tableName="sys_role" domainObjectName="SysRole"></table>-->
+    <!--    <table tableName="sys_role_privilege" domainObjectName="SysRolePrivilege"></table>-->
+    <!--    <table tableName="sys_user" domainObjectName="SysUser"></table>-->
+    <!--    <table tableName="sys_user_role" domainObjectName="SysUserRole"></table>-->
+    <table tableName="t_data_type" domainObjectName="DataType"></table>
 
 
 
