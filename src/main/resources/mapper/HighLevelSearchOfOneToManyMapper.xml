@@ -30,11 +30,6 @@
   </sql>
 
 
-  <resultMap id="privilegeMap" type="com.niu.springbootmybatis.model.SysPrivilege">
-    <id property="id" column="id"/>
-    <result property="privilegeName" column="privilege_name"/>
-    <result property="privilegeUrl" column="privilege_url"/>
-  </resultMap>
   <resultMap id="userMap" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
     <id property="id" column="id"/>
     <result property="userName" column="user_name"/>
@@ -50,6 +45,11 @@
     <result property="enabled" column="enabled"/>
     <result property="createBy" column="create_by"/>
     <result property="createTime" column="create_time"/>
+  </resultMap>
+  <resultMap id="privilegeMap" type="com.niu.springbootmybatis.model.SysPrivilege">
+    <id property="id" column="id"/>
+    <result property="privilegeName" column="privilege_name"/>
+    <result property="privilegeUrl" column="privilege_url"/>
   </resultMap>
   <resultMap id="rolePrivilegeListMap" extends="roleMap" type="com.niu.springbootmybatis.controller.vo.SysRoleVO">
     <collection property="privilegeList" columnPrefix="privilege_" resultMap="privilegeMap"/>
