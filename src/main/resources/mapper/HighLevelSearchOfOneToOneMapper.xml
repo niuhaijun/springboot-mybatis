@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.niu.springbootmybatis.mapper.HighLevelSearchMapper">
+<mapper namespace="com.niu.springbootmybatis.mapper.HighLevelSearchOfOneToOneMapper">
+
+  <sql id="select-user-and-role-sql">
+    select u.id,
+           u.user_name,
+           u.user_password,
+           u.user_email,
+           u.create_time,
+           u.user_info,
+           u.head_img,
+
+           r.id          rolePre_id,
+           r.role_name   rolePre_role_name,
+           r.enabled     rolePre_enabled,
+           r.create_by   rolePre_create_by,
+           r.create_time rolePre_create_time
+    from sys_user u
+           inner join sys_user_role ur on u.id = ur.user_id
+           inner join sys_role r on ur.role_id = r.id
+    where u.id = #{id}
+  </sql>
+
 
   <select id="selectUserAndRoleById1" resultType="com.niu.springbootmybatis.controller.vo.SysUserVO">
     select u.id,
@@ -23,25 +44,6 @@
     where u.id = #{id}
   </select>
 
-  <sql id="select-user-and-role-sql">
-    select u.id,
-           u.user_name,
-           u.user_password,
-           u.user_email,
-           u.create_time,
-           u.user_info,
-           u.head_img,
-
-           r.id          rolePre_id,
-           r.role_name   rolePre_role_name,
-           r.enabled     rolePre_enabled,
-           r.create_by   rolePre_create_by,
-           r.create_time rolePre_create_time
-    from sys_user u
-           inner join sys_user_role ur on u.id = ur.user_id
-           inner join sys_role r on ur.role_id = r.id
-    where u.id = #{id}
-  </sql>
 
   <resultMap id="resultMap_0" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
     <id property="id" column="id"/>
@@ -102,6 +104,5 @@
     <!--  <select id="selectUserAndRoleById3" resultMap="resultMap_3_2">-->
     <include refid="select-user-and-role-sql"/>
   </select>
-
 
 </mapper>

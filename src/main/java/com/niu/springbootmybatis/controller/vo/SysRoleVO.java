@@ -1,6 +1,8 @@
 package com.niu.springbootmybatis.controller.vo;
 
+import com.niu.springbootmybatis.model.SysPrivilege;
 import java.util.Date;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -22,4 +24,8 @@ public class SysRoleVO {
 
   private Date createTime;
 
+  /**
+   * 角色包含的权限列表
+   */
+  List<SysPrivilege> privilegeList;
 }

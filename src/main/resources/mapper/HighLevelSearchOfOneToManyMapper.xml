@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niu.springbootmybatis.mapper.HighLevelSearchOfOneToManyMapper">
+
+  <sql id="select-all-user-and-roles-sql">
+    select u.id,
+           u.user_name,
+           u.user_password,
+           u.user_email,
+           u.user_info,
+           u.head_img,
+           u.create_time,
+
+           r.id             role_id,
+           r.role_name      role_role_name,
+           r.enabled        role_enabled,
+           r.create_by      role_create_by,
+           r.create_time    role_create_time,
+
+
+           p.id             role_privilege_id,
+           p.privilege_name role_privilege_privilege_name,
+           p.privilege_url  role_privilege_privilege_url
+    from sys_user u
+           inner join sys_user_role ur on u.id = ur.user_id
+           inner join sys_role r on ur.role_id = r.id
+           inner join sys_role_privilege rp on rp.role_id = r.id
+           inner join sys_privilege p on p.id = rp.privilege_id
+  </sql>
+
+
+  <resultMap id="privilegeMap" type="com.niu.springbootmybatis.model.SysPrivilege">
+    <id property="id" column="id"/>
+    <result property="privilegeName" column="privilege_name"/>
+    <result property="privilegeUrl" column="privilege_url"/>
+  </resultMap>
+  <resultMap id="userMap" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
+    <id property="id" column="id"/>
+    <result property="userName" column="user_name"/>
+    <result property="userPassword" column="user_password"/>
+    <result property="userEmail" column="user_email"/>
+    <result property="userInfo" column="user_info"/>
+    <result property="headImg" column="head_img" jdbcType="BLOB"/>
+    <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <resultMap id="roleMap" type="com.niu.springbootmybatis.controller.vo.SysRoleVO">
+    <id property="id" column="id"/>
+    <result property="roleName" column="role_name"/>
+    <result property="enabled" column="enabled"/>
+    <result property="createBy" column="create_by"/>
+    <result property="createTime" column="create_time"/>
+  </resultMap>
+  <resultMap id="rolePrivilegeListMap" extends="roleMap" type="com.niu.springbootmybatis.controller.vo.SysRoleVO">
+    <collection property="privilegeList" columnPrefix="privilege_" resultMap="privilegeMap"/>
+  </resultMap>
+  <resultMap id="userRoleListMap" extends="userMap" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
+    <collection property="roleVOList" columnPrefix="role_" resultMap="rolePrivilegeListMap"/>
+  </resultMap>
+  <select id="selectAllUserAndRoleList" resultMap="userRoleListMap">
+    <include refid="select-all-user-and-roles-sql"/>
+  </select>
+
+
+  <resultMap id="resultMap1" type="com.niu.springbootmybatis.controller.vo.SysUserVO">
+    <id property="id" column="id"/>
+    <result property="userName" column="user_name"/>
+    <result property="userPassword" column="user_password"/>
+    <result property="userEmail" column="user_email"/>
+    <result property="userInfo" column="user_info"/>
+    <result property="headImg" column="head_img"/>
+    <result property="createTime" column="create_time"/>
+
+    <collection property="roleVOList" columnPrefix="role_"
+      ofType="com.niu.springbootmybatis.controller.vo.SysRoleVO">
+      <id property="id" column="id"/>
+      <result property="roleName" column="role_name"/>
+      <result property="enabled" column="enabled"/>
+      <result property="createBy" column="create_by"/>
+      <result property="createTime" column="create_time"/>
+    </collection>
+  </resultMap>
+  <select id="selectAllUserAndRoleList1" resultMap="resultMap1">
+    select u.id,
+           u.user_name,
+           u.user_password,
+           u.user_email,
+           u.user_info,
+           u.head_img,
+           u.create_time,
+
+           r.id          role_id,
+           r.role_name   role_role_name,
+           r.enabled     role_enabled,
+           r.create_by   role_create_by,
+           r.create_time role_create_time
+    from sys_user u
+           inner join sys_user_role ur on u.id = ur.user_id
+           inner join sys_role r on ur.role_id = r.id
+  </select>
+
+</mapper>

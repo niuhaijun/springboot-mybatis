@@ -1,7 +1,7 @@
 package com.niu.springbootmybatis.controller.vo;
 
-import com.niu.springbootmybatis.model.SysRole;
 import java.util.Date;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -24,4 +24,7 @@ public class SysUserVO {
 
   // 用户的角色信息
   private SysRoleVO roleVO;
+
+  // 用户的角色列表
+  private List<SysRoleVO> roleVOList;
 }

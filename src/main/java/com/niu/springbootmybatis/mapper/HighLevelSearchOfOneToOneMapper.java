@@ -6,9 +6,9 @@ import com.niu.springbootmybatis.controller.vo.SysUserVO;
  * @author: niuhaijun
  * @date: 2019-11-06 10:49
  * @version: 1.0
- * @description: 高级查询
+ * @description: 高级查询 一对一
  */
-public interface HighLevelSearchMapper {
+public interface HighLevelSearchOfOneToOneMapper {
 
 
   /**
@@ -34,7 +34,7 @@ public interface HighLevelSearchMapper {
    *
    * 使用resultMap处理一对一关系
    *
-   * 使用线程的resultMap简化配置
+   * 使用已有的的resultMap简化配置
    */
   SysUserVO selectUserAndRoleById3(Long id);
 
