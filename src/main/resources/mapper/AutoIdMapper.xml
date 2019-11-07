@@ -241,8 +241,8 @@
       select last_insert_id()
     </selectKey>
 
-    insert into spring_boot_auto_id (auto_id, content)
-    values (#{autoId}, #{content,jdbcType=VARCHAR})
+    insert into spring_boot_auto_id (content)
+    values (#{content,jdbcType=VARCHAR})
   </insert>
   <insert id="batchInsertAndGetAutoId"
     useGeneratedKeys="true"

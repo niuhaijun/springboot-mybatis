@@ -43,7 +43,7 @@ public class ApplicationTest {
   /**
    * SQL
    *
-   * insert into spring_boot_auto_id (auto_id, content) values (?, ?)
+   * insert into spring_boot_auto_id (content) values (?)
    */
   @Test
   public void test_2() {
