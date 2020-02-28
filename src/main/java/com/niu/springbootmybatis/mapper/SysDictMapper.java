@@ -7,31 +7,33 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SysDictMapper {
-    int countByExample(SysDictExample example);
 
-    int deleteByExample(SysDictExample example);
+	int countByExample(SysDictExample example);
 
-    int deleteByPrimaryKey(Long id);
+	int deleteByExample(SysDictExample example);
 
-    int insert(SysDict record);
+	int deleteByPrimaryKey(Long id);
 
-    int insertSelective(SysDict record);
+	int insert(SysDict record);
 
-    List<SysDict> selectByExampleWithRowbounds(SysDictExample example, RowBounds rowBounds);
+	int insertSelective(SysDict record);
 
-    List<SysDict> selectByExample(SysDictExample example);
+	List<SysDict> selectByExampleWithRowbounds(SysDictExample example, RowBounds rowBounds);
 
-    SysDict selectByPrimaryKey(Long id);
+	List<SysDict> selectByExample(SysDictExample example);
 
-    int updateByExampleSelective(@Param("record") SysDict record, @Param("example") SysDictExample example);
+	SysDict selectByPrimaryKey(Long id);
 
-    int updateByExample(@Param("record") SysDict record, @Param("example") SysDictExample example);
+	int updateByExampleSelective(@Param("record") SysDict record,
+		@Param("example") SysDictExample example);
 
-    int updateByPrimaryKeySelective(SysDict record);
+	int updateByExample(@Param("record") SysDict record, @Param("example") SysDictExample example);
 
-    int updateByPrimaryKey(SysDict record);
+	int updateByPrimaryKeySelective(SysDict record);
 
-    Long sumByExample(SysDictExample example);
+	int updateByPrimaryKey(SysDict record);
 
-    void batchInsert(@Param("items") List<SysDict> items);
+	Long sumByExample(SysDictExample example);
+
+	void batchInsert(@Param("items") List<SysDict> items);
 }

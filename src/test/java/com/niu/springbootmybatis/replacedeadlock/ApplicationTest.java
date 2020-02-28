@@ -28,27 +28,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ApplicationTest {
 
-  @Autowired
-  private RepalceDeadLockMapper mapper;
+	/**
+	 * 数据量
+	 */
+	private static final int RECORD_COUNT = 100_000;
+	@Autowired
+	private RepalceDeadLockMapper mapper;
+	@Autowired
+	private DeadLockService deadLockService;
 
-  @Autowired
-  private DeadLockService deadLockService;
+	/**
+	 * replace死锁演示
+	 */
+	@Test
+	public void test() {
 
-  /**
-   * 数据量
-   */
-  private static final int RECORD_COUNT = 100_000;
+		ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
-
-  /**
-   * replace死锁演示
-   */
-  @Test
-  public void test() {
-
-    ExecutorService threadPool = Executors.newFixedThreadPool(2);
-
-    while (true) {
+		while (true) {
 
 //      try {
 //        Thread.sleep(10);
@@ -57,62 +54,62 @@ public class ApplicationTest {
 //        e.printStackTrace();
 //      }
 
-      for (int fid = 1; fid <= 2; fid++) {
+			for (int fid = 1; fid <= 2; fid++) {
 
-        RepalceDeadLock deadLock = new RepalceDeadLock();
-        deadLock.setFid(fid);
-        deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
+				RepalceDeadLock deadLock = new RepalceDeadLock();
+				deadLock.setFid(fid);
+				deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
 
-        threadPool.execute(() -> mapper.replace(Collections.singletonList(deadLock)));
+				threadPool.execute(() -> mapper.replace(Collections.singletonList(deadLock)));
 
 //        threadPool.execute(() -> deadLockService.replace(Collections.singletonList(deadLock)));
 
 //        threadPool.execute(() -> deadLockService.deleteAndInsert(deadLock));
 
-      }
-    }
-  }
+			}
+		}
+	}
 
 
-  /**
-   * insert死锁演示
-   */
-  @Test
-  public void insetWithUpdate() {
+	/**
+	 * insert死锁演示
+	 */
+	@Test
+	public void insetWithUpdate() {
 
-    ExecutorService threadPool = Executors.newFixedThreadPool(2);
+		ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
-    while (true) {
+		while (true) {
 
-      for (int fid = 1; fid <= 3; fid++) {
+			for (int fid = 1; fid <= 3; fid++) {
 
-        RepalceDeadLock deadLock = new RepalceDeadLock();
-        deadLock.setFid(fid);
-        deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
+				RepalceDeadLock deadLock = new RepalceDeadLock();
+				deadLock.setFid(fid);
+				deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
 
-        threadPool.execute(() -> mapper.insertWithUpdate(deadLock));
-      }
-    }
-  }
+				threadPool.execute(() -> mapper.insertWithUpdate(deadLock));
+			}
+		}
+	}
 
 
-  /**
-   * 批量构建数据
-   */
-  @Test
-  public void insertData() {
+	/**
+	 * 批量构建数据
+	 */
+	@Test
+	public void insertData() {
 
-    RepalceDeadLockExample example = new RepalceDeadLockExample();
-    mapper.deleteByExample(example);
+		RepalceDeadLockExample example = new RepalceDeadLockExample();
+		mapper.deleteByExample(example);
 
-    List<RepalceDeadLock> list = new ArrayList<>(RECORD_COUNT);
-    for (int fid = 1; fid <= RECORD_COUNT; fid++) {
-      RepalceDeadLock deadLock = new RepalceDeadLock();
-      deadLock.setFid(fid);
-      deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
-      list.add(deadLock);
-    }
-    int num = mapper.batchInsert(list);
-    System.out.println(num);
-  }
+		List<RepalceDeadLock> list = new ArrayList<>(RECORD_COUNT);
+		for (int fid = 1; fid <= RECORD_COUNT; fid++) {
+			RepalceDeadLock deadLock = new RepalceDeadLock();
+			deadLock.setFid(fid);
+			deadLock.setContent(UUID.randomUUID().toString().replaceAll("-", ""));
+			list.add(deadLock);
+		}
+		int num = mapper.batchInsert(list);
+		System.out.println(num);
+	}
 }

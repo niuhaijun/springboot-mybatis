@@ -7,23 +7,26 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SysUserRoleMapper {
-    int countByExample(SysUserRoleExample example);
 
-    int deleteByExample(SysUserRoleExample example);
+	int countByExample(SysUserRoleExample example);
 
-    int insert(SysUserRole record);
+	int deleteByExample(SysUserRoleExample example);
 
-    int insertSelective(SysUserRole record);
+	int insert(SysUserRole record);
 
-    List<SysUserRole> selectByExampleWithRowbounds(SysUserRoleExample example, RowBounds rowBounds);
+	int insertSelective(SysUserRole record);
 
-    List<SysUserRole> selectByExample(SysUserRoleExample example);
+	List<SysUserRole> selectByExampleWithRowbounds(SysUserRoleExample example, RowBounds rowBounds);
 
-    int updateByExampleSelective(@Param("record") SysUserRole record, @Param("example") SysUserRoleExample example);
+	List<SysUserRole> selectByExample(SysUserRoleExample example);
 
-    int updateByExample(@Param("record") SysUserRole record, @Param("example") SysUserRoleExample example);
+	int updateByExampleSelective(@Param("record") SysUserRole record,
+		@Param("example") SysUserRoleExample example);
 
-    Long sumByExample(SysUserRoleExample example);
+	int updateByExample(@Param("record") SysUserRole record,
+		@Param("example") SysUserRoleExample example);
 
-    void batchInsert(@Param("items") List<SysUserRole> items);
+	Long sumByExample(SysUserRoleExample example);
+
+	void batchInsert(@Param("items") List<SysUserRole> items);
 }

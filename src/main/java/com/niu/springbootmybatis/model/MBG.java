@@ -3,69 +3,77 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 
 public class MBG implements Serializable {
-    private String uid;
 
-    private String uuid;
+	private static final long serialVersionUID = 1L;
+	private String uid;
+	private String uuid;
+	private String kid;
+	private String updateSql;
 
-    private String kid;
+	public MBG(String uid, String uuid, String kid) {
 
-    private static final long serialVersionUID = 1L;
+		this.uid = uid;
+		this.uuid = uuid;
+		this.kid = kid;
+	}
 
-    private String updateSql;
+	public MBG() {
 
-    public MBG(String uid, String uuid, String kid) {
-        this.uid = uid;
-        this.uuid = uuid;
-        this.kid = kid;
-    }
+		super();
+	}
 
-    public MBG() {
-        super();
-    }
+	public String getUid() {
 
-    public String getUid() {
-        return uid;
-    }
+		return uid;
+	}
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
-    }
+	public void setUid(String uid) {
 
-    public String getUuid() {
-        return uuid;
-    }
+		this.uid = uid == null ? null : uid.trim();
+	}
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid == null ? null : uuid.trim();
-    }
+	public String getUuid() {
 
-    public String getKid() {
-        return kid;
-    }
+		return uuid;
+	}
 
-    public void setKid(String kid) {
-        this.kid = kid == null ? null : kid.trim();
-    }
+	public void setUuid(String uuid) {
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", uid=").append(uid);
-        sb.append(", uuid=").append(uuid);
-        sb.append(", kid=").append(kid);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+		this.uuid = uuid == null ? null : uuid.trim();
+	}
 
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
+	public String getKid() {
 
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
-    }
+		return kid;
+	}
+
+	public void setKid(String kid) {
+
+		this.kid = kid == null ? null : kid.trim();
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", uid=").append(uid);
+		sb.append(", uuid=").append(uuid);
+		sb.append(", kid=").append(kid);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
+
+	public String getUpdateSql() {
+
+		return this.updateSql;
+	}
+
+	public void setUpdateSql(String updateSql) {
+
+		this.updateSql = updateSql;
+	}
 }

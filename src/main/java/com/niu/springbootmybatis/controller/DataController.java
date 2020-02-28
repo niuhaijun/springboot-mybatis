@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/data")
 public class DataController {
 
-  @Autowired
-  private DataService dataService;
+	@Autowired
+	private DataService dataService;
 
-  @PostMapping(value = "/analysisData")
-  public List<DataVO> analysisData(@Valid @RequestBody DataParam dataParam) {
+	@PostMapping(value = "/analysisData")
+	public List<DataVO> analysisData(@Valid @RequestBody DataParam dataParam) {
 
-    return dataService.analysisData(dataParam);
-  }
+		return dataService.analysisData(dataParam);
+	}
 
 }

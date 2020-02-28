@@ -20,18 +20,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class DataTypeTest {
 
-  @Autowired
-  private DataTypeMapper mapper;
+	@Autowired
+	private DataTypeMapper mapper;
 
-  @Test
-  public void save() {
+	@Test
+	public void save() {
 
-    String str = "0";
+		String str = "0";
 
-    for (long i = 0; i < Long.MAX_VALUE; i++) {
-      str += str;
-      log.info("current len is {}", str.length());
-      mapper.insert(new DataType(null, str));
-    }
-  }
+		for (long i = 0; i < Long.MAX_VALUE; i++) {
+			str += str;
+			log.info("current len is {}", str.length());
+			mapper.insert(new DataType(null, str));
+		}
+	}
 }

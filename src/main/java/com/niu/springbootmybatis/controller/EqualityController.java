@@ -19,18 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/equality")
 public class EqualityController {
 
-  private static final Logger logger = LoggerFactory.getLogger(EqualityController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EqualityController.class);
 
-  @Autowired
-  private EqualityMapper equalityMapper;
+	@Autowired
+	private EqualityMapper equalityMapper;
 
-  @RequestMapping("/testEquals")
-  public List<Equality> testEquals(Equality equality) {
+	@RequestMapping("/testEquals")
+	public List<Equality> testEquals(Equality equality) {
 
-    logger.info("testEquals->param:【param->{}】", JSON.toJSONString(equality));
-    List<Equality> result = equalityMapper.testEquals(equality);
+		logger.info("testEquals->param:【param->{}】", JSON.toJSONString(equality));
+		List<Equality> result = equalityMapper.testEquals(equality);
 
-    return result;
-  }
+		return result;
+	}
 
 }

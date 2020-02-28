@@ -7,31 +7,33 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SysRoleMapper {
-    int countByExample(SysRoleExample example);
 
-    int deleteByExample(SysRoleExample example);
+	int countByExample(SysRoleExample example);
 
-    int deleteByPrimaryKey(Long id);
+	int deleteByExample(SysRoleExample example);
 
-    int insert(SysRole record);
+	int deleteByPrimaryKey(Long id);
 
-    int insertSelective(SysRole record);
+	int insert(SysRole record);
 
-    List<SysRole> selectByExampleWithRowbounds(SysRoleExample example, RowBounds rowBounds);
+	int insertSelective(SysRole record);
 
-    List<SysRole> selectByExample(SysRoleExample example);
+	List<SysRole> selectByExampleWithRowbounds(SysRoleExample example, RowBounds rowBounds);
 
-    SysRole selectByPrimaryKey(Long id);
+	List<SysRole> selectByExample(SysRoleExample example);
 
-    int updateByExampleSelective(@Param("record") SysRole record, @Param("example") SysRoleExample example);
+	SysRole selectByPrimaryKey(Long id);
 
-    int updateByExample(@Param("record") SysRole record, @Param("example") SysRoleExample example);
+	int updateByExampleSelective(@Param("record") SysRole record,
+		@Param("example") SysRoleExample example);
 
-    int updateByPrimaryKeySelective(SysRole record);
+	int updateByExample(@Param("record") SysRole record, @Param("example") SysRoleExample example);
 
-    int updateByPrimaryKey(SysRole record);
+	int updateByPrimaryKeySelective(SysRole record);
 
-    Long sumByExample(SysRoleExample example);
+	int updateByPrimaryKey(SysRole record);
 
-    void batchInsert(@Param("items") List<SysRole> items);
+	Long sumByExample(SysRoleExample example);
+
+	void batchInsert(@Param("items") List<SysRole> items);
 }

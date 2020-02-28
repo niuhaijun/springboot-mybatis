@@ -3,57 +3,64 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 
 public class TypeHandlerEnum implements Serializable {
-    private Integer id;
 
-    private Integer status;
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private Integer status;
+	private String updateSql;
 
-    private static final long serialVersionUID = 1L;
+	public TypeHandlerEnum(Integer id, Integer status) {
 
-    private String updateSql;
+		this.id = id;
+		this.status = status;
+	}
 
-    public TypeHandlerEnum(Integer id, Integer status) {
-        this.id = id;
-        this.status = status;
-    }
+	public TypeHandlerEnum() {
 
-    public TypeHandlerEnum() {
-        super();
-    }
+		super();
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+		return id;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public void setId(Integer id) {
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+		this.id = id;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	public Integer getStatus() {
 
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
+		return status;
+	}
 
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
-    }
+	public void setStatus(Integer status) {
+
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", id=").append(id);
+		sb.append(", status=").append(status);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
+
+	public String getUpdateSql() {
+
+		return this.updateSql;
+	}
+
+	public void setUpdateSql(String updateSql) {
+
+		this.updateSql = updateSql;
+	}
 }

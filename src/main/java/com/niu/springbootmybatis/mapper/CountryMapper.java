@@ -7,31 +7,33 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface CountryMapper {
-    int countByExample(CountryExample example);
 
-    int deleteByExample(CountryExample example);
+	int countByExample(CountryExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(CountryExample example);
 
-    int insert(Country record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(Country record);
+	int insert(Country record);
 
-    List<Country> selectByExampleWithRowbounds(CountryExample example, RowBounds rowBounds);
+	int insertSelective(Country record);
 
-    List<Country> selectByExample(CountryExample example);
+	List<Country> selectByExampleWithRowbounds(CountryExample example, RowBounds rowBounds);
 
-    Country selectByPrimaryKey(Integer id);
+	List<Country> selectByExample(CountryExample example);
 
-    int updateByExampleSelective(@Param("record") Country record, @Param("example") CountryExample example);
+	Country selectByPrimaryKey(Integer id);
 
-    int updateByExample(@Param("record") Country record, @Param("example") CountryExample example);
+	int updateByExampleSelective(@Param("record") Country record,
+		@Param("example") CountryExample example);
 
-    int updateByPrimaryKeySelective(Country record);
+	int updateByExample(@Param("record") Country record, @Param("example") CountryExample example);
 
-    int updateByPrimaryKey(Country record);
+	int updateByPrimaryKeySelective(Country record);
 
-    Long sumByExample(CountryExample example);
+	int updateByPrimaryKey(Country record);
 
-    void batchInsert(@Param("items") List<Country> items);
+	Long sumByExample(CountryExample example);
+
+	void batchInsert(@Param("items") List<Country> items);
 }

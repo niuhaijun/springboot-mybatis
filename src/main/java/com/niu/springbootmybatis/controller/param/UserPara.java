@@ -11,20 +11,20 @@ import lombok.Data;
 @Data
 public class UserPara {
 
-  private Integer pageNum = 1;
+	private Integer pageNum = 1;
 
-  private Integer pageSize = 2;
+	private Integer pageSize = 2;
 
-  private String id;
+	private String id;
 
-  private String username;
+	private String username;
 
-  private String password;
+	private String password;
 
-  private Date createTime;
+	private Date createTime;
 
-  private Date updateTime;
+	private Date updateTime;
 
-  private Integer used;
+	private Integer used;
 
 }

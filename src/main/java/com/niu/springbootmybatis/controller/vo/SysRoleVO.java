@@ -14,18 +14,13 @@ import lombok.Data;
 @Data
 public class SysRoleVO {
 
-  private Long id;
-
-  private String roleName;
-
-  private Integer enabled;
-
-  private Long createBy;
-
-  private Date createTime;
-
-  /**
-   * 角色包含的权限列表
-   */
-  List<SysPrivilege> privilegeList;
+	/**
+	 * 角色包含的权限列表
+	 */
+	List<SysPrivilege> privilegeList;
+	private Long id;
+	private String roleName;
+	private Integer enabled;
+	private Long createBy;
+	private Date createTime;
 }

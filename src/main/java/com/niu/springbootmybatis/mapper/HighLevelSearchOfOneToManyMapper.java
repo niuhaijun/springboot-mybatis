@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface HighLevelSearchOfOneToManyMapper {
 
-  List<SysUserVO> selectAllUserAndRoleList();
+	List<SysUserVO> selectAllUserAndRoleList();
 
 
-  List<SysUserVO> selectAllUserAndRoleList1();
+	List<SysUserVO> selectAllUserAndRoleList1();
 
 }

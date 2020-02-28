@@ -5,105 +5,105 @@ import java.util.Date;
 
 public class User implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-  private String id;
-  private String username;
-  private String password;
-  private Date createTime;
-  private Date updateTime;
-  private Integer used;
+	private static final long serialVersionUID = 1L;
+	private String id;
+	private String username;
+	private String password;
+	private Date createTime;
+	private Date updateTime;
+	private Integer used;
 
-  public User(String id, String username, String password, Date createTime, Date updateTime,
-      Integer used) {
+	public User(String id, String username, String password, Date createTime, Date updateTime,
+		Integer used) {
 
-    this.id = id;
-    this.username = username;
-    this.password = password;
-    this.createTime = createTime;
-    this.updateTime = updateTime;
-    this.used = used;
-  }
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.createTime = createTime;
+		this.updateTime = updateTime;
+		this.used = used;
+	}
 
-  public User() {
+	public User() {
 
-    super();
-  }
+		super();
+	}
 
-  public String getId() {
+	public String getId() {
 
-    return id;
-  }
+		return id;
+	}
 
-  public void setId(String id) {
+	public void setId(String id) {
 
-    this.id = id == null ? null : id.trim();
-  }
+		this.id = id == null ? null : id.trim();
+	}
 
-  public String getUsername() {
+	public String getUsername() {
 
-    return username;
-  }
+		return username;
+	}
 
-  public void setUsername(String username) {
+	public void setUsername(String username) {
 
-    this.username = username == null ? null : username.trim();
-  }
+		this.username = username == null ? null : username.trim();
+	}
 
-  public String getPassword() {
+	public String getPassword() {
 
-    return password;
-  }
+		return password;
+	}
 
-  public void setPassword(String password) {
+	public void setPassword(String password) {
 
-    this.password = password == null ? null : password.trim();
-  }
+		this.password = password == null ? null : password.trim();
+	}
 
-  public Date getCreateTime() {
+	public Date getCreateTime() {
 
-    return createTime;
-  }
+		return createTime;
+	}
 
-  public void setCreateTime(Date createTime) {
+	public void setCreateTime(Date createTime) {
 
-    this.createTime = createTime;
-  }
+		this.createTime = createTime;
+	}
 
-  public Date getUpdateTime() {
+	public Date getUpdateTime() {
 
-    return updateTime;
-  }
+		return updateTime;
+	}
 
-  public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(Date updateTime) {
 
-    this.updateTime = updateTime;
-  }
+		this.updateTime = updateTime;
+	}
 
-  public Integer getUsed() {
+	public Integer getUsed() {
 
-    return used;
-  }
+		return used;
+	}
 
-  public void setUsed(Integer used) {
+	public void setUsed(Integer used) {
 
-    this.used = used;
-  }
+		this.used = used;
+	}
 
-  @Override
-  public String toString() {
+	@Override
+	public String toString() {
 
-    StringBuilder sb = new StringBuilder();
-    sb.append(getClass().getSimpleName());
-    sb.append(" [");
-    sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", username=").append(username);
-    sb.append(", password=").append(password);
-    sb.append(", createTime=").append(createTime);
-    sb.append(", updateTime=").append(updateTime);
-    sb.append(", used=").append(used);
-    sb.append(", serialVersionUID=").append(serialVersionUID);
-    sb.append("]");
-    return sb.toString();
-  }
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", id=").append(id);
+		sb.append(", username=").append(username);
+		sb.append(", password=").append(password);
+		sb.append(", createTime=").append(createTime);
+		sb.append(", updateTime=").append(updateTime);
+		sb.append(", used=").append(used);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
 }

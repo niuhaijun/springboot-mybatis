@@ -10,34 +10,36 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface DataMapper {
-    int countByExample(DataExample example);
 
-    int deleteByExample(DataExample example);
+	int countByExample(DataExample example);
 
-    int deleteByPrimaryKey(DataKey key);
+	int deleteByExample(DataExample example);
 
-    int insert(Data record);
+	int deleteByPrimaryKey(DataKey key);
 
-    int insertSelective(Data record);
+	int insert(Data record);
 
-    List<Data> selectByExampleWithRowbounds(DataExample example, RowBounds rowBounds);
+	int insertSelective(Data record);
 
-    List<Data> selectByExample(DataExample example);
+	List<Data> selectByExampleWithRowbounds(DataExample example, RowBounds rowBounds);
 
-    Data selectByPrimaryKey(DataKey key);
+	List<Data> selectByExample(DataExample example);
 
-    int updateByExampleSelective(@Param("record") Data record, @Param("example") DataExample example);
+	Data selectByPrimaryKey(DataKey key);
 
-    int updateByExample(@Param("record") Data record, @Param("example") DataExample example);
+	int updateByExampleSelective(@Param("record") Data record,
+		@Param("example") DataExample example);
 
-    int updateByPrimaryKeySelective(Data record);
+	int updateByExample(@Param("record") Data record, @Param("example") DataExample example);
 
-    int updateByPrimaryKey(Data record);
+	int updateByPrimaryKeySelective(Data record);
 
-    /**
-     * 动态SQL，涉及的内容有很多
-     *  1、与字符串常量做比较
-     *  2、#与$的区别，例如：动态拼接SQL(表，字段，order by 等)要用$
-     */
-    List<DataVO> analysisData(DataParam param);
+	int updateByPrimaryKey(Data record);
+
+	/**
+	 * 动态SQL，涉及的内容有很多
+	 *  1、与字符串常量做比较
+	 *  2、#与$的区别，例如：动态拼接SQL(表，字段，order by 等)要用$
+	 */
+	List<DataVO> analysisData(DataParam param);
 }

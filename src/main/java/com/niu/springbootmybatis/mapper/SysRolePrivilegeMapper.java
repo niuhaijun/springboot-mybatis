@@ -7,23 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SysRolePrivilegeMapper {
-    int countByExample(SysRolePrivilegeExample example);
 
-    int deleteByExample(SysRolePrivilegeExample example);
+	int countByExample(SysRolePrivilegeExample example);
 
-    int insert(SysRolePrivilege record);
+	int deleteByExample(SysRolePrivilegeExample example);
 
-    int insertSelective(SysRolePrivilege record);
+	int insert(SysRolePrivilege record);
 
-    List<SysRolePrivilege> selectByExampleWithRowbounds(SysRolePrivilegeExample example, RowBounds rowBounds);
+	int insertSelective(SysRolePrivilege record);
 
-    List<SysRolePrivilege> selectByExample(SysRolePrivilegeExample example);
+	List<SysRolePrivilege> selectByExampleWithRowbounds(SysRolePrivilegeExample example,
+		RowBounds rowBounds);
 
-    int updateByExampleSelective(@Param("record") SysRolePrivilege record, @Param("example") SysRolePrivilegeExample example);
+	List<SysRolePrivilege> selectByExample(SysRolePrivilegeExample example);
 
-    int updateByExample(@Param("record") SysRolePrivilege record, @Param("example") SysRolePrivilegeExample example);
+	int updateByExampleSelective(@Param("record") SysRolePrivilege record,
+		@Param("example") SysRolePrivilegeExample example);
 
-    Long sumByExample(SysRolePrivilegeExample example);
+	int updateByExample(@Param("record") SysRolePrivilege record,
+		@Param("example") SysRolePrivilegeExample example);
 
-    void batchInsert(@Param("items") List<SysRolePrivilege> items);
+	Long sumByExample(SysRolePrivilegeExample example);
+
+	void batchInsert(@Param("items") List<SysRolePrivilege> items);
 }

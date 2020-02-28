@@ -70,11 +70,3 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
   returnPageInfo: check
-
-
-
-
-#控制台打印SQL
-logging:
-  level:
-    com.niu.springbootmybatis.mapper: debug

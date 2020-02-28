@@ -14,16 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface GoodService {
 
-  Integer add(GoodPara goodPara);
+	Integer add(GoodPara goodPara);
 
-  Integer update(GoodPara goodPara);
+	Integer update(GoodPara goodPara);
 
-  Integer logicDelete(GoodPara goodPara);
+	Integer logicDelete(GoodPara goodPara);
 
-  Integer delete(GoodPara goodPara);
+	Integer delete(GoodPara goodPara);
 
-  List<GoodVO> select(GoodPara goodPara);
+	List<GoodVO> select(GoodPara goodPara);
 
-  PageInfo<GoodVO> pagedSelect(GoodPara goodPara);
+	PageInfo<GoodVO> pagedSelect(GoodPara goodPara);
 
 }

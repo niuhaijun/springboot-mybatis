@@ -7,31 +7,35 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SysPrivilegeMapper {
-    int countByExample(SysPrivilegeExample example);
 
-    int deleteByExample(SysPrivilegeExample example);
+	int countByExample(SysPrivilegeExample example);
 
-    int deleteByPrimaryKey(Long id);
+	int deleteByExample(SysPrivilegeExample example);
 
-    int insert(SysPrivilege record);
+	int deleteByPrimaryKey(Long id);
 
-    int insertSelective(SysPrivilege record);
+	int insert(SysPrivilege record);
 
-    List<SysPrivilege> selectByExampleWithRowbounds(SysPrivilegeExample example, RowBounds rowBounds);
+	int insertSelective(SysPrivilege record);
 
-    List<SysPrivilege> selectByExample(SysPrivilegeExample example);
+	List<SysPrivilege> selectByExampleWithRowbounds(SysPrivilegeExample example,
+		RowBounds rowBounds);
 
-    SysPrivilege selectByPrimaryKey(Long id);
+	List<SysPrivilege> selectByExample(SysPrivilegeExample example);
 
-    int updateByExampleSelective(@Param("record") SysPrivilege record, @Param("example") SysPrivilegeExample example);
+	SysPrivilege selectByPrimaryKey(Long id);
 
-    int updateByExample(@Param("record") SysPrivilege record, @Param("example") SysPrivilegeExample example);
+	int updateByExampleSelective(@Param("record") SysPrivilege record,
+		@Param("example") SysPrivilegeExample example);
 
-    int updateByPrimaryKeySelective(SysPrivilege record);
+	int updateByExample(@Param("record") SysPrivilege record,
+		@Param("example") SysPrivilegeExample example);
 
-    int updateByPrimaryKey(SysPrivilege record);
+	int updateByPrimaryKeySelective(SysPrivilege record);
 
-    Long sumByExample(SysPrivilegeExample example);
+	int updateByPrimaryKey(SysPrivilege record);
 
-    void batchInsert(@Param("items") List<SysPrivilege> items);
+	Long sumByExample(SysPrivilegeExample example);
+
+	void batchInsert(@Param("items") List<SysPrivilege> items);
 }

@@ -21,18 +21,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ApplicationTest {
 
-  @Autowired
-  private TypeHandlerEnumMapper mapper;
+	@Autowired
+	private TypeHandlerEnumMapper mapper;
 
-  @Test
-  public void test() {
+	@Test
+	public void test() {
 
-    // id 是自增的，不用设置
-    Task task = new Task(null, Status.LOGIN);
-    mapper.save(task);
+		// id 是自增的，不用设置
+		Task task = new Task(null, Status.LOGIN);
+		mapper.save(task);
 
-    mapper.queryAll().forEach(t -> {
-      System.out.println(t.getId() + " " + t.getStatus().getCode() + " " + t.getStatus().getMsg());
-    });
-  }
+		mapper.queryAll().forEach(t -> {
+			System.out
+				.println(t.getId() + " " + t.getStatus().getCode() + " " + t.getStatus().getMsg());
+		});
+	}
 }

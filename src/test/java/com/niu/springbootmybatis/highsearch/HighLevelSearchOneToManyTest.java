@@ -21,22 +21,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class HighLevelSearchOneToManyTest {
 
-  @Autowired
-  private HighLevelSearchOfOneToManyMapper mapper;
+	@Autowired
+	private HighLevelSearchOfOneToManyMapper mapper;
 
-  @Test
-  public void test1() {
+	@Test
+	public void test1() {
 
-    List<SysUserVO> list = mapper.selectAllUserAndRoleList();
-    System.out.println(list.size());
-  }
+		List<SysUserVO> list = mapper.selectAllUserAndRoleList();
+		System.out.println(list.size());
+	}
 
 
-  @Test
-  public void test2() {
+	@Test
+	public void test2() {
 
-    List<SysUserVO> list = mapper.selectAllUserAndRoleList1();
-    System.out.println(list.size());
-  }
+		List<SysUserVO> list = mapper.selectAllUserAndRoleList1();
+		System.out.println(list.size());
+	}
 
 }

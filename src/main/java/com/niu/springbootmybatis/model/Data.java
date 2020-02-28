@@ -4,60 +4,67 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Data extends DataKey implements Serializable {
-    private String taskType;
 
-    private Long num;
+	private static final long serialVersionUID = 1L;
+	private String taskType;
+	private Long num;
+	private Date createTime;
 
-    private Date createTime;
+	public Data(Date date, String taskId, String taskType, Long num, Date createTime) {
 
-    private static final long serialVersionUID = 1L;
+		super(date, taskId);
+		this.taskType = taskType;
+		this.num = num;
+		this.createTime = createTime;
+	}
 
-    public Data(Date date, String taskId, String taskType, Long num, Date createTime) {
-        super(date, taskId);
-        this.taskType = taskType;
-        this.num = num;
-        this.createTime = createTime;
-    }
+	public Data() {
 
-    public Data() {
-        super();
-    }
+		super();
+	}
 
-    public String getTaskType() {
-        return taskType;
-    }
+	public String getTaskType() {
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType == null ? null : taskType.trim();
-    }
+		return taskType;
+	}
 
-    public Long getNum() {
-        return num;
-    }
+	public void setTaskType(String taskType) {
 
-    public void setNum(Long num) {
-        this.num = num;
-    }
+		this.taskType = taskType == null ? null : taskType.trim();
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public Long getNum() {
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+		return num;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", taskType=").append(taskType);
-        sb.append(", num=").append(num);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	public void setNum(Long num) {
+
+		this.num = num;
+	}
+
+	public Date getCreateTime() {
+
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+
+		this.createTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", taskType=").append(taskType);
+		sb.append(", num=").append(num);
+		sb.append(", createTime=").append(createTime);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
 }

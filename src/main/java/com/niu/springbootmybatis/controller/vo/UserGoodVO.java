@@ -12,12 +12,12 @@ import lombok.Data;
 @Data
 public class UserGoodVO extends UserVO {
 
-  private String id;
+	private String id;
 
-  private String username;
+	private String username;
 
-  private Integer used;
+	private Integer used;
 
-  private List<GoodVO> goodVOList = new ArrayList<>();
+	private List<GoodVO> goodVOList = new ArrayList<>();
 
 }

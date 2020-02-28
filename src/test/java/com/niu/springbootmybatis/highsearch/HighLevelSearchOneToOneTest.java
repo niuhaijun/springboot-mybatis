@@ -20,32 +20,32 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class HighLevelSearchOneToOneTest {
 
-  @Autowired
-  private HighLevelSearchOfOneToOneMapper mapper;
+	@Autowired
+	private HighLevelSearchOfOneToOneMapper mapper;
 
-  /**
-   * 1对1
-   */
-  @Test
-  public void test1() {
+	/**
+	 * 1对1
+	 */
+	@Test
+	public void test1() {
 
-    SysUserVO userVO = mapper.selectUserAndRoleById1(1001L);
-    log.info("userVO = {}", userVO);
-  }
+		SysUserVO userVO = mapper.selectUserAndRoleById1(1001L);
+		log.info("userVO = {}", userVO);
+	}
 
-  @Test
-  public void test2() {
+	@Test
+	public void test2() {
 
-    SysUserVO userVO = mapper.selectUserAndRoleById2(1001L);
-    log.info("userVO = {}", userVO);
-  }
+		SysUserVO userVO = mapper.selectUserAndRoleById2(1001L);
+		log.info("userVO = {}", userVO);
+	}
 
-  @Test
-  public void test3() {
+	@Test
+	public void test3() {
 
-    SysUserVO userVO = mapper.selectUserAndRoleById3(1001L);
-    log.info("userVO = {}", userVO);
-  }
+		SysUserVO userVO = mapper.selectUserAndRoleById3(1001L);
+		log.info("userVO = {}", userVO);
+	}
 
 
 }

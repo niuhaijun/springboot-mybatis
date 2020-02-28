@@ -4,52 +4,52 @@ import java.io.Serializable;
 
 public class OrderKey implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-  private String userId;
-  private String goodId;
+	private static final long serialVersionUID = 1L;
+	private String userId;
+	private String goodId;
 
-  public OrderKey(String userId, String goodId) {
+	public OrderKey(String userId, String goodId) {
 
-    this.userId = userId;
-    this.goodId = goodId;
-  }
+		this.userId = userId;
+		this.goodId = goodId;
+	}
 
-  public OrderKey() {
+	public OrderKey() {
 
-    super();
-  }
+		super();
+	}
 
-  public String getUserId() {
+	public String getUserId() {
 
-    return userId;
-  }
+		return userId;
+	}
 
-  public void setUserId(String userId) {
+	public void setUserId(String userId) {
 
-    this.userId = userId == null ? null : userId.trim();
-  }
+		this.userId = userId == null ? null : userId.trim();
+	}
 
-  public String getGoodId() {
+	public String getGoodId() {
 
-    return goodId;
-  }
+		return goodId;
+	}
 
-  public void setGoodId(String goodId) {
+	public void setGoodId(String goodId) {
 
-    this.goodId = goodId == null ? null : goodId.trim();
-  }
+		this.goodId = goodId == null ? null : goodId.trim();
+	}
 
-  @Override
-  public String toString() {
+	@Override
+	public String toString() {
 
-    StringBuilder sb = new StringBuilder();
-    sb.append(getClass().getSimpleName());
-    sb.append(" [");
-    sb.append("Hash = ").append(hashCode());
-    sb.append(", userId=").append(userId);
-    sb.append(", goodId=").append(goodId);
-    sb.append(", serialVersionUID=").append(serialVersionUID);
-    sb.append("]");
-    return sb.toString();
-  }
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", userId=").append(userId);
+		sb.append(", goodId=").append(goodId);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
 }

@@ -7,37 +7,42 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface DataTypeMapper {
-    int countByExample(DataTypeExample example);
 
-    int deleteByExample(DataTypeExample example);
+	int countByExample(DataTypeExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(DataTypeExample example);
 
-    int insert(DataType record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(DataType record);
+	int insert(DataType record);
 
-    List<DataType> selectByExampleWithBLOBsWithRowbounds(DataTypeExample example, RowBounds rowBounds);
+	int insertSelective(DataType record);
 
-    List<DataType> selectByExampleWithBLOBs(DataTypeExample example);
+	List<DataType> selectByExampleWithBLOBsWithRowbounds(DataTypeExample example,
+		RowBounds rowBounds);
 
-    List<DataType> selectByExampleWithRowbounds(DataTypeExample example, RowBounds rowBounds);
+	List<DataType> selectByExampleWithBLOBs(DataTypeExample example);
 
-    List<DataType> selectByExample(DataTypeExample example);
+	List<DataType> selectByExampleWithRowbounds(DataTypeExample example, RowBounds rowBounds);
 
-    DataType selectByPrimaryKey(Integer id);
+	List<DataType> selectByExample(DataTypeExample example);
 
-    int updateByExampleSelective(@Param("record") DataType record, @Param("example") DataTypeExample example);
+	DataType selectByPrimaryKey(Integer id);
 
-    int updateByExampleWithBLOBs(@Param("record") DataType record, @Param("example") DataTypeExample example);
+	int updateByExampleSelective(@Param("record") DataType record,
+		@Param("example") DataTypeExample example);
 
-    int updateByExample(@Param("record") DataType record, @Param("example") DataTypeExample example);
+	int updateByExampleWithBLOBs(@Param("record") DataType record,
+		@Param("example") DataTypeExample example);
 
-    int updateByPrimaryKeySelective(DataType record);
+	int updateByExample(@Param("record") DataType record,
+		@Param("example") DataTypeExample example);
 
-    int updateByPrimaryKeyWithBLOBs(DataType record);
+	int updateByPrimaryKeySelective(DataType record);
 
-    Long sumByExample(DataTypeExample example);
+	int updateByPrimaryKeyWithBLOBs(DataType record);
 
-    void batchInsert(@Param("items") List<DataType> items);
+	Long sumByExample(DataTypeExample example);
+
+	void batchInsert(@Param("items") List<DataType> items);
 }

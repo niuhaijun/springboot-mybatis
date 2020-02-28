@@ -7,31 +7,32 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface MBGMapper {
-    int countByExample(MBGExample example);
 
-    int deleteByExample(MBGExample example);
+	int countByExample(MBGExample example);
 
-    int deleteByPrimaryKey(String uid);
+	int deleteByExample(MBGExample example);
 
-    int insert(MBG record);
+	int deleteByPrimaryKey(String uid);
 
-    int insertSelective(MBG record);
+	int insert(MBG record);
 
-    List<MBG> selectByExampleWithRowbounds(MBGExample example, RowBounds rowBounds);
+	int insertSelective(MBG record);
 
-    List<MBG> selectByExample(MBGExample example);
+	List<MBG> selectByExampleWithRowbounds(MBGExample example, RowBounds rowBounds);
 
-    MBG selectByPrimaryKey(String uid);
+	List<MBG> selectByExample(MBGExample example);
 
-    int updateByExampleSelective(@Param("record") MBG record, @Param("example") MBGExample example);
+	MBG selectByPrimaryKey(String uid);
 
-    int updateByExample(@Param("record") MBG record, @Param("example") MBGExample example);
+	int updateByExampleSelective(@Param("record") MBG record, @Param("example") MBGExample example);
 
-    int updateByPrimaryKeySelective(MBG record);
+	int updateByExample(@Param("record") MBG record, @Param("example") MBGExample example);
 
-    int updateByPrimaryKey(MBG record);
+	int updateByPrimaryKeySelective(MBG record);
 
-    Long sumByExample(MBGExample example);
+	int updateByPrimaryKey(MBG record);
 
-    void batchInsert(@Param("items") List<MBG> items);
+	Long sumByExample(MBGExample example);
+
+	void batchInsert(@Param("items") List<MBG> items);
 }

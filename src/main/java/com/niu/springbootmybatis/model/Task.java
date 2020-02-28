@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Task {
 
-  private Integer id;
-  private Status status;
+	private Integer id;
+	private Status status;
 
 }

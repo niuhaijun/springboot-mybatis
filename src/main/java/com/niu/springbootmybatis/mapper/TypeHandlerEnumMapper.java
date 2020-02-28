@@ -8,37 +8,40 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface TypeHandlerEnumMapper {
-    int countByExample(TypeHandlerEnumExample example);
 
-    int deleteByExample(TypeHandlerEnumExample example);
+	int countByExample(TypeHandlerEnumExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(TypeHandlerEnumExample example);
 
-    int insert(TypeHandlerEnum record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(TypeHandlerEnum record);
+	int insert(TypeHandlerEnum record);
 
-    List<TypeHandlerEnum> selectByExampleWithRowbounds(TypeHandlerEnumExample example, RowBounds rowBounds);
+	int insertSelective(TypeHandlerEnum record);
 
-    List<TypeHandlerEnum> selectByExample(TypeHandlerEnumExample example);
+	List<TypeHandlerEnum> selectByExampleWithRowbounds(TypeHandlerEnumExample example,
+		RowBounds rowBounds);
 
-    TypeHandlerEnum selectByPrimaryKey(Integer id);
+	List<TypeHandlerEnum> selectByExample(TypeHandlerEnumExample example);
 
-    int updateByExampleSelective(@Param("record") TypeHandlerEnum record, @Param("example") TypeHandlerEnumExample example);
+	TypeHandlerEnum selectByPrimaryKey(Integer id);
 
-    int updateByExample(@Param("record") TypeHandlerEnum record, @Param("example") TypeHandlerEnumExample example);
+	int updateByExampleSelective(@Param("record") TypeHandlerEnum record,
+		@Param("example") TypeHandlerEnumExample example);
 
-    int updateByPrimaryKeySelective(TypeHandlerEnum record);
+	int updateByExample(@Param("record") TypeHandlerEnum record,
+		@Param("example") TypeHandlerEnumExample example);
 
-    int updateByPrimaryKey(TypeHandlerEnum record);
+	int updateByPrimaryKeySelective(TypeHandlerEnum record);
 
-    Long sumByExample(TypeHandlerEnumExample example);
+	int updateByPrimaryKey(TypeHandlerEnum record);
 
-    void batchInsert(@Param("items") List<TypeHandlerEnum> items);
+	Long sumByExample(TypeHandlerEnumExample example);
+
+	void batchInsert(@Param("items") List<TypeHandlerEnum> items);
 
 
+	void save(Task task);
 
-
-    void save(Task task);
-    List<Task> queryAll();
+	List<Task> queryAll();
 }

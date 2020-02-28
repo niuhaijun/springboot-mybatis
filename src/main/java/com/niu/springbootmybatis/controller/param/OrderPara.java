@@ -11,14 +11,14 @@ import lombok.Data;
 @Data
 public class OrderPara {
 
-  private String userId;
+	private String userId;
 
-  private String goodId;
+	private String goodId;
 
-  private Date createTime;
+	private Date createTime;
 
-  private Date updateTime;
+	private Date updateTime;
 
-  private Integer used;
+	private Integer used;
 
 }

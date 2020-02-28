@@ -3,59 +3,66 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 
 public class RepalceDeadLock implements Serializable {
-    private Integer id;
 
-    private Integer fid;
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private Integer fid;
+	private String content;
 
-    private String content;
+	public RepalceDeadLock(Integer id, Integer fid, String content) {
 
-    private static final long serialVersionUID = 1L;
+		this.id = id;
+		this.fid = fid;
+		this.content = content;
+	}
 
-    public RepalceDeadLock(Integer id, Integer fid, String content) {
-        this.id = id;
-        this.fid = fid;
-        this.content = content;
-    }
+	public RepalceDeadLock() {
 
-    public RepalceDeadLock() {
-        super();
-    }
+		super();
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+		return id;
+	}
 
-    public Integer getFid() {
-        return fid;
-    }
+	public void setId(Integer id) {
 
-    public void setFid(Integer fid) {
-        this.fid = fid;
-    }
+		this.id = id;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public Integer getFid() {
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
+		return fid;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", fid=").append(fid);
-        sb.append(", content=").append(content);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	public void setFid(Integer fid) {
+
+		this.fid = fid;
+	}
+
+	public String getContent() {
+
+		return content;
+	}
+
+	public void setContent(String content) {
+
+		this.content = content == null ? null : content.trim();
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", id=").append(id);
+		sb.append(", fid=").append(fid);
+		sb.append(", content=").append(content);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
 }

@@ -4,117 +4,130 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class SysUser implements Serializable {
-    private Long id;
 
-    private String userName;
+	private static final long serialVersionUID = 1L;
+	private Long id;
+	private String userName;
+	private String userPassword;
+	private String userEmail;
+	private Date createTime;
+	private String userInfo;
+	private byte[] headImg;
+	private String updateSql;
 
-    private String userPassword;
+	public SysUser(Long id, String userName, String userPassword, String userEmail, Date createTime,
+		String userInfo, byte[] headImg) {
 
-    private String userEmail;
+		this.id = id;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+		this.createTime = createTime;
+		this.userInfo = userInfo;
+		this.headImg = headImg;
+	}
 
-    private Date createTime;
+	public SysUser() {
 
-    private String userInfo;
+		super();
+	}
 
-    private byte[] headImg;
+	public Long getId() {
 
-    private static final long serialVersionUID = 1L;
+		return id;
+	}
 
-    private String updateSql;
+	public void setId(Long id) {
 
-    public SysUser(Long id, String userName, String userPassword, String userEmail, Date createTime, String userInfo, byte[] headImg) {
-        this.id = id;
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.userEmail = userEmail;
-        this.createTime = createTime;
-        this.userInfo = userInfo;
-        this.headImg = headImg;
-    }
+		this.id = id;
+	}
 
-    public SysUser() {
-        super();
-    }
+	public String getUserName() {
 
-    public Long getId() {
-        return id;
-    }
+		return userName;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setUserName(String userName) {
 
-    public String getUserName() {
-        return userName;
-    }
+		this.userName = userName == null ? null : userName.trim();
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
-    }
+	public String getUserPassword() {
 
-    public String getUserPassword() {
-        return userPassword;
-    }
+		return userPassword;
+	}
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
-    }
+	public void setUserPassword(String userPassword) {
 
-    public String getUserEmail() {
-        return userEmail;
-    }
+		this.userPassword = userPassword == null ? null : userPassword.trim();
+	}
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail == null ? null : userEmail.trim();
-    }
+	public String getUserEmail() {
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+		return userEmail;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setUserEmail(String userEmail) {
 
-    public String getUserInfo() {
-        return userInfo;
-    }
+		this.userEmail = userEmail == null ? null : userEmail.trim();
+	}
 
-    public void setUserInfo(String userInfo) {
-        this.userInfo = userInfo == null ? null : userInfo.trim();
-    }
+	public Date getCreateTime() {
 
-    public byte[] getHeadImg() {
-        return headImg;
-    }
+		return createTime;
+	}
 
-    public void setHeadImg(byte[] headImg) {
-        this.headImg = headImg;
-    }
+	public void setCreateTime(Date createTime) {
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", userName=").append(userName);
-        sb.append(", userPassword=").append(userPassword);
-        sb.append(", userEmail=").append(userEmail);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", userInfo=").append(userInfo);
-        sb.append(", headImg=").append(headImg);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+		this.createTime = createTime;
+	}
 
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
+	public String getUserInfo() {
 
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
-    }
+		return userInfo;
+	}
+
+	public void setUserInfo(String userInfo) {
+
+		this.userInfo = userInfo == null ? null : userInfo.trim();
+	}
+
+	public byte[] getHeadImg() {
+
+		return headImg;
+	}
+
+	public void setHeadImg(byte[] headImg) {
+
+		this.headImg = headImg;
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", id=").append(id);
+		sb.append(", userName=").append(userName);
+		sb.append(", userPassword=").append(userPassword);
+		sb.append(", userEmail=").append(userEmail);
+		sb.append(", createTime=").append(createTime);
+		sb.append(", userInfo=").append(userInfo);
+		sb.append(", headImg=").append(headImg);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
+
+	public String getUpdateSql() {
+
+		return this.updateSql;
+	}
+
+	public void setUpdateSql(String updateSql) {
+
+		this.updateSql = updateSql;
+	}
 }

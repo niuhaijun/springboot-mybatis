@@ -11,23 +11,23 @@ import lombok.Data;
 @Data
 public class GoodPara {
 
-  private Integer pageNum = 1;
+	private Integer pageNum = 1;
 
-  private Integer pageSize = 2;
+	private Integer pageSize = 2;
 
-  private String id;
+	private String id;
 
-  private Integer type;
+	private Integer type;
 
-  private String name;
+	private String name;
 
-  private Double price;
+	private Double price;
 
-  private Integer num;
+	private Integer num;
 
-  private Date createTime;
+	private Date createTime;
 
-  private Date updateTime;
+	private Date updateTime;
 
-  private Integer used;
+	private Integer used;
 }

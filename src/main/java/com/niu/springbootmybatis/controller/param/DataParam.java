@@ -14,18 +14,18 @@ import lombok.Data;
 @Data
 public class DataParam {
 
-  @NotBlank
-  @Pattern(regexp = "days|weeks|months", message = "取值范围是days, weeks, months")
-  private String timeType;
+	@NotBlank
+	@Pattern(regexp = "days|weeks|months", message = "取值范围是days, weeks, months")
+	private String timeType;
 
-  @NotNull
-  private Date startTime;
+	@NotNull
+	private Date startTime;
 
-  @NotNull
-  private Date endTime;
+	@NotNull
+	private Date endTime;
 
-  @NotBlank
-  @Pattern(regexp = "1|2", message = "取值范围是1,2")
-  private String taskType;
+	@NotBlank
+	@Pattern(regexp = "1|2", message = "取值范围是1,2")
+	private String taskType;
 
 }

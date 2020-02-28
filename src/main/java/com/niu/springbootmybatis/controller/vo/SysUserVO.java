@@ -13,18 +13,18 @@ import lombok.Data;
 @Data
 public class SysUserVO {
 
-  // 用户信息
-  private Long id;
-  private String userName;
-  private String userPassword;
-  private String userEmail;
-  private Date createTime;
-  private String userInfo;
-  private byte[] headImg;
+	// 用户信息
+	private Long id;
+	private String userName;
+	private String userPassword;
+	private String userEmail;
+	private Date createTime;
+	private String userInfo;
+	private byte[] headImg;
 
-  // 用户的角色信息
-  private SysRoleVO roleVO;
+	// 用户的角色信息
+	private SysRoleVO roleVO;
 
-  // 用户的角色列表
-  private List<SysRoleVO> roleVOList;
+	// 用户的角色列表
+	private List<SysRoleVO> roleVOList;
 }

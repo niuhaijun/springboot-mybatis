@@ -9,32 +9,32 @@ import org.apache.ibatis.annotations.Param;
 
 public interface OrderMapper {
 
-  int countByExample(OrderExample example);
+	int countByExample(OrderExample example);
 
-  int deleteByExample(OrderExample example);
+	int deleteByExample(OrderExample example);
 
-  int deleteByPrimaryKey(OrderKey key);
+	int deleteByPrimaryKey(OrderKey key);
 
-  int insert(Order record);
+	int insert(Order record);
 
-  int insertSelective(Order record);
+	int insertSelective(Order record);
 
-  List<Order> selectByExample(OrderExample example);
+	List<Order> selectByExample(OrderExample example);
 
-  Order selectByPrimaryKey(OrderKey key);
+	Order selectByPrimaryKey(OrderKey key);
 
-  int updateByExampleSelective(@Param("record") Order record,
-      @Param("example") OrderExample example);
+	int updateByExampleSelective(@Param("record") Order record,
+		@Param("example") OrderExample example);
 
-  int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
+	int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
 
-  int updateByPrimaryKeySelective(Order record);
+	int updateByPrimaryKeySelective(Order record);
 
-  int updateByPrimaryKey(Order record);
+	int updateByPrimaryKey(Order record);
 
-  /**
-   * 联表查询
-   */
-  List<UserGoodVO> getUserWithGoods(String userId);
+	/**
+	 * 联表查询
+	 */
+	List<UserGoodVO> getUserWithGoods(String userId);
 
 }

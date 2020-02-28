@@ -7,39 +7,43 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SysUserMapper {
-    int countByExample(SysUserExample example);
 
-    int deleteByExample(SysUserExample example);
+	int countByExample(SysUserExample example);
 
-    int deleteByPrimaryKey(Long id);
+	int deleteByExample(SysUserExample example);
 
-    int insert(SysUser record);
+	int deleteByPrimaryKey(Long id);
 
-    int insertSelective(SysUser record);
+	int insert(SysUser record);
 
-    List<SysUser> selectByExampleWithBLOBsWithRowbounds(SysUserExample example, RowBounds rowBounds);
+	int insertSelective(SysUser record);
 
-    List<SysUser> selectByExampleWithBLOBs(SysUserExample example);
+	List<SysUser> selectByExampleWithBLOBsWithRowbounds(SysUserExample example,
+		RowBounds rowBounds);
 
-    List<SysUser> selectByExampleWithRowbounds(SysUserExample example, RowBounds rowBounds);
+	List<SysUser> selectByExampleWithBLOBs(SysUserExample example);
 
-    List<SysUser> selectByExample(SysUserExample example);
+	List<SysUser> selectByExampleWithRowbounds(SysUserExample example, RowBounds rowBounds);
 
-    SysUser selectByPrimaryKey(Long id);
+	List<SysUser> selectByExample(SysUserExample example);
 
-    int updateByExampleSelective(@Param("record") SysUser record, @Param("example") SysUserExample example);
+	SysUser selectByPrimaryKey(Long id);
 
-    int updateByExampleWithBLOBs(@Param("record") SysUser record, @Param("example") SysUserExample example);
+	int updateByExampleSelective(@Param("record") SysUser record,
+		@Param("example") SysUserExample example);
 
-    int updateByExample(@Param("record") SysUser record, @Param("example") SysUserExample example);
+	int updateByExampleWithBLOBs(@Param("record") SysUser record,
+		@Param("example") SysUserExample example);
 
-    int updateByPrimaryKeySelective(SysUser record);
+	int updateByExample(@Param("record") SysUser record, @Param("example") SysUserExample example);
 
-    int updateByPrimaryKeyWithBLOBs(SysUser record);
+	int updateByPrimaryKeySelective(SysUser record);
 
-    int updateByPrimaryKey(SysUser record);
+	int updateByPrimaryKeyWithBLOBs(SysUser record);
 
-    Long sumByExample(SysUserExample example);
+	int updateByPrimaryKey(SysUser record);
 
-    void batchInsert(@Param("items") List<SysUser> items);
+	Long sumByExample(SysUserExample example);
+
+	void batchInsert(@Param("items") List<SysUser> items);
 }

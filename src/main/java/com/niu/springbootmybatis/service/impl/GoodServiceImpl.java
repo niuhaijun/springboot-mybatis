@@ -23,81 +23,81 @@ import org.springframework.stereotype.Service;
 @Service
 public class GoodServiceImpl implements GoodService {
 
-  @Autowired
-  private GoodMapper goodMapper;
+	@Autowired
+	private GoodMapper goodMapper;
 
-  @Override
-  public Integer add(GoodPara goodPara) {
+	@Override
+	public Integer add(GoodPara goodPara) {
 
-    Date date = new Date();
-    goodPara.setCreateTime(date);
-    goodPara.setUpdateTime(date);
+		Date date = new Date();
+		goodPara.setCreateTime(date);
+		goodPara.setUpdateTime(date);
 
-    Good good = new Good();
-    BeanUtils.copyProperties(goodPara, good);
-    return goodMapper.insertSelective(good);
-  }
+		Good good = new Good();
+		BeanUtils.copyProperties(goodPara, good);
+		return goodMapper.insertSelective(good);
+	}
 
-  @Override
-  public Integer update(GoodPara goodPara) {
+	@Override
+	public Integer update(GoodPara goodPara) {
 
-    goodPara.setUpdateTime(new Date());
-    Good good = new Good();
-    BeanUtils.copyProperties(goodPara, good);
+		goodPara.setUpdateTime(new Date());
+		Good good = new Good();
+		BeanUtils.copyProperties(goodPara, good);
 
-    GoodExample example = new GoodExample();
-    example.createCriteria().andIdEqualTo(goodPara.getId());
-    return goodMapper.updateByExampleSelective(good, example);
-  }
+		GoodExample example = new GoodExample();
+		example.createCriteria().andIdEqualTo(goodPara.getId());
+		return goodMapper.updateByExampleSelective(good, example);
+	}
 
-  @Override
-  public Integer logicDelete(GoodPara goodPara) {
+	@Override
+	public Integer logicDelete(GoodPara goodPara) {
 
-    Good good = new Good();
-    good.setUsed(0);
-    good.setUpdateTime(new Date());
+		Good good = new Good();
+		good.setUsed(0);
+		good.setUpdateTime(new Date());
 
-    GoodExample example = new GoodExample();
-    example.createCriteria().andIdEqualTo(goodPara.getId());
+		GoodExample example = new GoodExample();
+		example.createCriteria().andIdEqualTo(goodPara.getId());
 
-    return goodMapper.updateByExampleSelective(good, example);
-  }
+		return goodMapper.updateByExampleSelective(good, example);
+	}
 
-  @Override
-  public Integer delete(GoodPara goodPara) {
+	@Override
+	public Integer delete(GoodPara goodPara) {
 
-    return goodMapper.deleteByPrimaryKey(goodPara.getId());
-  }
+		return goodMapper.deleteByPrimaryKey(goodPara.getId());
+	}
 
-  @Override
-  public List<GoodVO> select(GoodPara goodPara) {
+	@Override
+	public List<GoodVO> select(GoodPara goodPara) {
 
-    GoodExample example = new GoodExample();
-    example.createCriteria().andUsedEqualTo(1);
+		GoodExample example = new GoodExample();
+		example.createCriteria().andUsedEqualTo(1);
 
-    List<Good> userList = goodMapper.selectByExample(example);
-    List<GoodVO> result = new ArrayList<>(userList.size());
-    userList.forEach(t -> {
-      GoodVO goodVO = new GoodVO();
-      BeanUtils.copyProperties(t, goodVO);
-      result.add(goodVO);
-    });
+		List<Good> userList = goodMapper.selectByExample(example);
+		List<GoodVO> result = new ArrayList<>(userList.size());
+		userList.forEach(t -> {
+			GoodVO goodVO = new GoodVO();
+			BeanUtils.copyProperties(t, goodVO);
+			result.add(goodVO);
+		});
 
-    return result;
-  }
+		return result;
+	}
 
-  @Override
-  public PageInfo<GoodVO> pagedSelect(GoodPara goodPara) {
+	@Override
+	public PageInfo<GoodVO> pagedSelect(GoodPara goodPara) {
 
-    GoodExample example = new GoodExample();
-    example.createCriteria().andUsedEqualTo(1);
+		GoodExample example = new GoodExample();
+		example.createCriteria().andUsedEqualTo(1);
 
-    /**
-     * 将参数传给这个方法就可以实现物理分页了，非常简单。
-     */
-    PageHelper.startPage(goodPara.getPageNum(), goodPara.getPageSize());
-    List<GoodVO> result = select(goodPara);
-    return new PageInfo<>(result);
-  }
+		/**
+		 * 将参数传给这个方法就可以实现物理分页了，非常简单。
+		 */
+		PageHelper.startPage(goodPara.getPageNum(), goodPara.getPageSize());
+		List<GoodVO> result = select(goodPara);
+		return new PageInfo<>(result);
+	}
 
 }

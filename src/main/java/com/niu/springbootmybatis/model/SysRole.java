@@ -4,93 +4,103 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class SysRole implements Serializable {
-    private Long id;
 
-    private String roleName;
+	private static final long serialVersionUID = 1L;
+	private Long id;
+	private String roleName;
+	private Integer enabled;
+	private Long createBy;
+	private Date createTime;
+	private String updateSql;
 
-    private Integer enabled;
+	public SysRole(Long id, String roleName, Integer enabled, Long createBy, Date createTime) {
 
-    private Long createBy;
+		this.id = id;
+		this.roleName = roleName;
+		this.enabled = enabled;
+		this.createBy = createBy;
+		this.createTime = createTime;
+	}
 
-    private Date createTime;
+	public SysRole() {
 
-    private static final long serialVersionUID = 1L;
+		super();
+	}
 
-    private String updateSql;
+	public Long getId() {
 
-    public SysRole(Long id, String roleName, Integer enabled, Long createBy, Date createTime) {
-        this.id = id;
-        this.roleName = roleName;
-        this.enabled = enabled;
-        this.createBy = createBy;
-        this.createTime = createTime;
-    }
+		return id;
+	}
 
-    public SysRole() {
-        super();
-    }
+	public void setId(Long id) {
 
-    public Long getId() {
-        return id;
-    }
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getRoleName() {
 
-    public String getRoleName() {
-        return roleName;
-    }
+		return roleName;
+	}
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
-    }
+	public void setRoleName(String roleName) {
 
-    public Integer getEnabled() {
-        return enabled;
-    }
+		this.roleName = roleName == null ? null : roleName.trim();
+	}
 
-    public void setEnabled(Integer enabled) {
-        this.enabled = enabled;
-    }
+	public Integer getEnabled() {
 
-    public Long getCreateBy() {
-        return createBy;
-    }
+		return enabled;
+	}
 
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
+	public void setEnabled(Integer enabled) {
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+		this.enabled = enabled;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public Long getCreateBy() {
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", roleName=").append(roleName);
-        sb.append(", enabled=").append(enabled);
-        sb.append(", createBy=").append(createBy);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+		return createBy;
+	}
 
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
+	public void setCreateBy(Long createBy) {
 
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
-    }
+		this.createBy = createBy;
+	}
+
+	public Date getCreateTime() {
+
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+
+		this.createTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", id=").append(id);
+		sb.append(", roleName=").append(roleName);
+		sb.append(", enabled=").append(enabled);
+		sb.append(", createBy=").append(createBy);
+		sb.append(", createTime=").append(createTime);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
+
+	public String getUpdateSql() {
+
+		return this.updateSql;
+	}
+
+	public void setUpdateSql(String updateSql) {
+
+		this.updateSql = updateSql;
+	}
 }

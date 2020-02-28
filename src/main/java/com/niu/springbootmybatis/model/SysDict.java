@@ -3,81 +3,90 @@ package com.niu.springbootmybatis.model;
 import java.io.Serializable;
 
 public class SysDict implements Serializable {
-    private Long id;
 
-    private String code;
+	private static final long serialVersionUID = 1L;
+	private Long id;
+	private String code;
+	private String name;
+	private String value;
+	private String updateSql;
 
-    private String name;
+	public SysDict(Long id, String code, String name, String value) {
 
-    private String value;
+		this.id = id;
+		this.code = code;
+		this.name = name;
+		this.value = value;
+	}
 
-    private static final long serialVersionUID = 1L;
+	public SysDict() {
 
-    private String updateSql;
+		super();
+	}
 
-    public SysDict(Long id, String code, String name, String value) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-        this.value = value;
-    }
+	public Long getId() {
 
-    public SysDict() {
-        super();
-    }
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+		this.id = id;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
 
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
+		return code;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCode(String code) {
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+		this.code = code == null ? null : code.trim();
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public String getName() {
 
-    public void setValue(String value) {
-        this.value = value == null ? null : value.trim();
-    }
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", code=").append(code);
-        sb.append(", name=").append(name);
-        sb.append(", value=").append(value);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	public void setName(String name) {
 
-    public String getUpdateSql() {
-        return this.updateSql;
-    }
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setUpdateSql(String updateSql) {
-        this.updateSql = updateSql;
-    }
+	public String getValue() {
+
+		return value;
+	}
+
+	public void setValue(String value) {
+
+		this.value = value == null ? null : value.trim();
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", id=").append(id);
+		sb.append(", code=").append(code);
+		sb.append(", name=").append(name);
+		sb.append(", value=").append(value);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
+
+	public String getUpdateSql() {
+
+		return this.updateSql;
+	}
+
+	public void setUpdateSql(String updateSql) {
+
+		this.updateSql = updateSql;
+	}
 }

@@ -14,11 +14,11 @@ import lombok.Data;
 @Data
 public class DataVO {
 
-  private String days;
+	private String days;
 
-  private String weeks;
+	private String weeks;
 
-  private String months;
+	private String months;
 
-  private Long totals;
+	private Long totals;
 }

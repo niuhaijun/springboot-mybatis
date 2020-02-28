@@ -19,44 +19,44 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/good")
 public class GoodController {
 
-  @Autowired
-  private GoodService goodService;
+	@Autowired
+	private GoodService goodService;
 
-  @RequestMapping("/add")
-  public Integer add(GoodPara goodPara) {
+	@RequestMapping("/add")
+	public Integer add(GoodPara goodPara) {
 
-    goodPara.setId(UUID.randomUUID().toString().replaceAll("-", "").toLowerCase());
-    return goodService.add(goodPara);
-  }
+		goodPara.setId(UUID.randomUUID().toString().replaceAll("-", "").toLowerCase());
+		return goodService.add(goodPara);
+	}
 
-  @RequestMapping("/update")
-  public Integer update(GoodPara goodPara) {
+	@RequestMapping("/update")
+	public Integer update(GoodPara goodPara) {
 
-    return goodService.update(goodPara);
-  }
+		return goodService.update(goodPara);
+	}
 
-  @RequestMapping("/logicDelete")
-  public Integer logicDelete(GoodPara goodPara) {
+	@RequestMapping("/logicDelete")
+	public Integer logicDelete(GoodPara goodPara) {
 
-    return goodService.logicDelete(goodPara);
-  }
+		return goodService.logicDelete(goodPara);
+	}
 
-  @RequestMapping("/delete")
-  public Integer delete(GoodPara goodPara) {
+	@RequestMapping("/delete")
+	public Integer delete(GoodPara goodPara) {
 
-    return goodService.delete(goodPara);
-  }
+		return goodService.delete(goodPara);
+	}
 
-  @RequestMapping("/select")
-  public List<GoodVO> select(GoodPara goodPara) {
+	@RequestMapping("/select")
+	public List<GoodVO> select(GoodPara goodPara) {
 
-    return goodService.select(goodPara);
-  }
+		return goodService.select(goodPara);
+	}
 
-  @RequestMapping("/pagedSelect")
-  public PageInfo<GoodVO> pagedSelect(GoodPara goodPara) {
+	@RequestMapping("/pagedSelect")
+	public PageInfo<GoodVO> pagedSelect(GoodPara goodPara) {
 
-    return goodService.pagedSelect(goodPara);
-  }
+		return goodService.pagedSelect(goodPara);
+	}
 
 }

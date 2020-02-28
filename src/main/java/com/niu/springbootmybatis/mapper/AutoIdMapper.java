@@ -8,43 +8,49 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface AutoIdMapper {
-    int countByExample(AutoIdExample example);
 
-    int deleteByExample(AutoIdExample example);
+	int countByExample(AutoIdExample example);
 
-    int deleteByPrimaryKey(Integer autoId);
+	int deleteByExample(AutoIdExample example);
 
-    List<AutoId> selectByExampleWithRowbounds(AutoIdExample example, RowBounds rowBounds);
+	int deleteByPrimaryKey(Integer autoId);
 
-    List<AutoId> selectByExample(AutoIdExample example);
+	List<AutoId> selectByExampleWithRowbounds(AutoIdExample example, RowBounds rowBounds);
 
-    AutoId selectByPrimaryKey(Integer autoId);
+	List<AutoId> selectByExample(AutoIdExample example);
 
-    int updateByExampleSelective(@Param("record") AutoId record, @Param("example") AutoIdExample example);
+	AutoId selectByPrimaryKey(Integer autoId);
 
-    int updateByExample(@Param("record") AutoId record, @Param("example") AutoIdExample example);
+	int updateByExampleSelective(@Param("record") AutoId record,
+		@Param("example") AutoIdExample example);
 
-    int updateByPrimaryKeySelective(AutoId record);
+	int updateByExample(@Param("record") AutoId record, @Param("example") AutoIdExample example);
 
-    int updateByPrimaryKey(AutoId record);
+	int updateByPrimaryKeySelective(AutoId record);
 
-    Long sumByExample(AutoIdExample example);
+	int updateByPrimaryKey(AutoId record);
 
-    void batchInsert(@Param("items") List<AutoId> items);
+	Long sumByExample(AutoIdExample example);
 
-    int insert(AutoId record);
+	void batchInsert(@Param("items") List<AutoId> items);
 
-    int insertSelective(AutoId record);
+	int insert(AutoId record);
 
-
-    int insertSelectiveWithParam(@Param("pa") AutoId record);
-    int insertSelectiveWithMap(Map<String, Object> map);
-    int insertSelectiveWithParams(@Param("myId") Integer id, @Param("myContent") String content);
-    int selectWithDefault(AutoId record);
+	int insertSelective(AutoId record);
 
 
+	int insertSelectiveWithParam(@Param("pa") AutoId record);
 
-    int insertAndGetAutoIncId(AutoId record);
-    int insertAndGetAutoIncrementId(AutoId record);
-    int batchInsertAndGetAutoId(@Param("myList") List<AutoId> list);
+	int insertSelectiveWithMap(Map<String, Object> map);
+
+	int insertSelectiveWithParams(@Param("myId") Integer id, @Param("myContent") String content);
+
+	int selectWithDefault(AutoId record);
+
+
+	int insertAndGetAutoIncId(AutoId record);
+
+	int insertAndGetAutoIncrementId(AutoId record);
+
+	int batchInsertAndGetAutoId(@Param("myList") List<AutoId> list);
 }

@@ -7,33 +7,38 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface RepalceDeadLockMapper {
-    int countByExample(RepalceDeadLockExample example);
 
-    int deleteByExample(RepalceDeadLockExample example);
+	int countByExample(RepalceDeadLockExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(RepalceDeadLockExample example);
 
-    int insert(RepalceDeadLock record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(RepalceDeadLock record);
+	int insert(RepalceDeadLock record);
 
-    List<RepalceDeadLock> selectByExampleWithRowbounds(RepalceDeadLockExample example, RowBounds rowBounds);
+	int insertSelective(RepalceDeadLock record);
 
-    List<RepalceDeadLock> selectByExample(RepalceDeadLockExample example);
+	List<RepalceDeadLock> selectByExampleWithRowbounds(RepalceDeadLockExample example,
+		RowBounds rowBounds);
 
-    RepalceDeadLock selectByPrimaryKey(Integer id);
+	List<RepalceDeadLock> selectByExample(RepalceDeadLockExample example);
 
-    int updateByExampleSelective(@Param("record") RepalceDeadLock record, @Param("example") RepalceDeadLockExample example);
+	RepalceDeadLock selectByPrimaryKey(Integer id);
 
-    int updateByExample(@Param("record") RepalceDeadLock record, @Param("example") RepalceDeadLockExample example);
+	int updateByExampleSelective(@Param("record") RepalceDeadLock record,
+		@Param("example") RepalceDeadLockExample example);
 
-    int updateByPrimaryKeySelective(RepalceDeadLock record);
+	int updateByExample(@Param("record") RepalceDeadLock record,
+		@Param("example") RepalceDeadLockExample example);
 
-    int updateByPrimaryKey(RepalceDeadLock record);
+	int updateByPrimaryKeySelective(RepalceDeadLock record);
+
+	int updateByPrimaryKey(RepalceDeadLock record);
 
 
+	int replace(@Param("repalceDeadLockList") List<RepalceDeadLock> repalceDeadLockList);
 
-    int replace(@Param("repalceDeadLockList") List<RepalceDeadLock> repalceDeadLockList);
-    int batchInsert(@Param("repalceDeadLockList") List<RepalceDeadLock> repalceDeadLockList);
-    int insertWithUpdate(RepalceDeadLock repalceDeadLock);
+	int batchInsert(@Param("repalceDeadLockList") List<RepalceDeadLock> repalceDeadLockList);
+
+	int insertWithUpdate(RepalceDeadLock repalceDeadLock);
 }

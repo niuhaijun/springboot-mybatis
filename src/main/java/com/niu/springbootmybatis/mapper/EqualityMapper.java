@@ -7,32 +7,35 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface EqualityMapper {
-    int countByExample(EqualityExample example);
 
-    int deleteByExample(EqualityExample example);
+	int countByExample(EqualityExample example);
 
-    int deleteByPrimaryKey(String uuid);
+	int deleteByExample(EqualityExample example);
 
-    int insert(Equality record);
+	int deleteByPrimaryKey(String uuid);
 
-    int insertSelective(Equality record);
+	int insert(Equality record);
 
-    List<Equality> selectByExampleWithRowbounds(EqualityExample example, RowBounds rowBounds);
+	int insertSelective(Equality record);
 
-    List<Equality> selectByExample(EqualityExample example);
+	List<Equality> selectByExampleWithRowbounds(EqualityExample example, RowBounds rowBounds);
 
-    Equality selectByPrimaryKey(String uuid);
+	List<Equality> selectByExample(EqualityExample example);
 
-    int updateByExampleSelective(@Param("record") Equality record, @Param("example") EqualityExample example);
+	Equality selectByPrimaryKey(String uuid);
 
-    int updateByExample(@Param("record") Equality record, @Param("example") EqualityExample example);
+	int updateByExampleSelective(@Param("record") Equality record,
+		@Param("example") EqualityExample example);
 
-    int updateByPrimaryKeySelective(Equality record);
+	int updateByExample(@Param("record") Equality record,
+		@Param("example") EqualityExample example);
 
-    int updateByPrimaryKey(Equality record);
+	int updateByPrimaryKeySelective(Equality record);
 
-    /**
-     * 在mybatis中测试常量相等
-     */
-    List<Equality> testEquals(Equality record);
+	int updateByPrimaryKey(Equality record);
+
+	/**
+	 * 在mybatis中测试常量相等
+	 */
+	List<Equality> testEquals(Equality record);
 }

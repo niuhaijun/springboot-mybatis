@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface DeadLockService {
 
-  int replace(List<RepalceDeadLock> repalceDeadLockList);
+	int replace(List<RepalceDeadLock> repalceDeadLockList);
 
 
-  int deleteAndInsert(RepalceDeadLock repalceDeadLockList);
+	int deleteAndInsert(RepalceDeadLock repalceDeadLockList);
 
 }

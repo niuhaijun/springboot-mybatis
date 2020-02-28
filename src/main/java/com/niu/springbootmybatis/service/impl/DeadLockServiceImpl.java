@@ -18,28 +18,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class DeadLockServiceImpl implements DeadLockService {
 
-  @Autowired
-  private RepalceDeadLockMapper mapper;
+	@Autowired
+	private RepalceDeadLockMapper mapper;
 
-  @Transactional(isolation = Isolation.REPEATABLE_READ)
-  @Override
-  public int replace(List<RepalceDeadLock> repalceDeadLockList) {
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
+	@Override
+	public int replace(List<RepalceDeadLock> repalceDeadLockList) {
 
-    return mapper.replace(repalceDeadLockList);
-  }
+		return mapper.replace(repalceDeadLockList);
+	}
 
-  @Transactional(isolation = Isolation.REPEATABLE_READ)
-  @Override
-  public int deleteAndInsert(RepalceDeadLock deadLock) {
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
+	@Override
+	public int deleteAndInsert(RepalceDeadLock deadLock) {
 
-    RepalceDeadLockExample para1 = new RepalceDeadLockExample();
-    para1.createCriteria().andFidEqualTo(deadLock.getFid());
-    int deleteNum = mapper.deleteByExample(para1);
-    int insertNum = mapper.insertSelective(deadLock);
+		RepalceDeadLockExample para1 = new RepalceDeadLockExample();
+		para1.createCriteria().andFidEqualTo(deadLock.getFid());
+		int deleteNum = mapper.deleteByExample(para1);
+		int insertNum = mapper.insertSelective(deadLock);
 
-
-    return deleteNum + insertNum;
-  }
+		return deleteNum + insertNum;
+	}
 
 
 }

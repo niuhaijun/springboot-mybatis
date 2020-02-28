@@ -7,49 +7,52 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface NullEmptyMapper {
-    int countByExample(NullEmptyExample example);
 
-    int deleteByExample(NullEmptyExample example);
+	int countByExample(NullEmptyExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(NullEmptyExample example);
 
-    int insert(NullEmpty record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(NullEmpty record);
+	int insert(NullEmpty record);
 
-    List<NullEmpty> selectByExampleWithRowbounds(NullEmptyExample example, RowBounds rowBounds);
+	int insertSelective(NullEmpty record);
 
-    List<NullEmpty> selectByExample(NullEmptyExample example);
+	List<NullEmpty> selectByExampleWithRowbounds(NullEmptyExample example, RowBounds rowBounds);
 
-    NullEmpty selectByPrimaryKey(Integer id);
+	List<NullEmpty> selectByExample(NullEmptyExample example);
 
-    int updateByExampleSelective(@Param("record") NullEmpty record, @Param("example") NullEmptyExample example);
+	NullEmpty selectByPrimaryKey(Integer id);
 
-    int updateByExample(@Param("record") NullEmpty record, @Param("example") NullEmptyExample example);
+	int updateByExampleSelective(@Param("record") NullEmpty record,
+		@Param("example") NullEmptyExample example);
 
-    int updateByPrimaryKeySelective(NullEmpty record);
+	int updateByExample(@Param("record") NullEmpty record,
+		@Param("example") NullEmptyExample example);
 
-    int updateByPrimaryKey(NullEmpty record);
+	int updateByPrimaryKeySelective(NullEmpty record);
+
+	int updateByPrimaryKey(NullEmpty record);
 
 
-    /**
-     * 插入常量 null
-     */
-    int insertNull();
+	/**
+	 * 插入常量 null
+	 */
+	int insertNull();
 
-    /**
-     * 插入常量 ""
-     * @return
-     */
-    int insertEmpty();
+	/**
+	 * 插入常量 ""
+	 * @return
+	 */
+	int insertEmpty();
 
-    /**
-     * 更新为 null
-     */
-    int updateNull(int id);
+	/**
+	 * 更新为 null
+	 */
+	int updateNull(int id);
 
-    /**
-     * 更新为 ""
-     */
-    int updateEmpty(int id);
+	/**
+	 * 更新为 ""
+	 */
+	int updateEmpty(int id);
 }

@@ -17,12 +17,12 @@ import org.springframework.stereotype.Service;
 public class DataServiceImpl implements DataService {
 
 
-  @Autowired
-  private DataMapper dataMapper;
+	@Autowired
+	private DataMapper dataMapper;
 
-  @Override
-  public List<DataVO> analysisData(DataParam dataParam) {
+	@Override
+	public List<DataVO> analysisData(DataParam dataParam) {
 
-    return dataMapper.analysisData(dataParam);
-  }
+		return dataMapper.analysisData(dataParam);
+	}
 }

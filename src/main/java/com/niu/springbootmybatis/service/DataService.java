@@ -11,8 +11,8 @@ import java.util.List;
  */
 public interface DataService {
 
-  /**
-   * 根据查询条件获取查询结果
-   */
-  List<DataVO> analysisData(DataParam dataParam);
+	/**
+	 * 根据查询条件获取查询结果
+	 */
+	List<DataVO> analysisData(DataParam dataParam);
 }
